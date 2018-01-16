@@ -11841,17 +11841,15 @@ div#notebook {
 <div class="highlight"><pre><span></span><span class="c1"># entity_resolution.py</span>
 <span class="kn">import</span> <span class="nn">re</span>
 <span class="kn">import</span> <span class="nn">operator</span>
-<span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SQLContext</span>
-
-<span class="n">sqlCt</span> <span class="o">=</span> <span class="n">SQLContext</span><span class="p">(</span><span class="n">sc</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
 
 <span class="k">class</span> <span class="nc">EntityResolution</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataFile1</span><span class="p">,</span> <span class="n">dataFile2</span><span class="p">,</span> <span class="n">stopWordsFile</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">stopWordsFile</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">stopWords</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">stopWordsBC</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">broadcast</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stopWords</span><span class="p">)</span><span class="o">.</span><span class="n">value</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">df1</span> <span class="o">=</span> <span class="n">sqlCt</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">parquet</span><span class="p">(</span><span class="n">dataFile1</span><span class="p">)</span><span class="o">.</span><span class="n">cache</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">df2</span> <span class="o">=</span> <span class="n">sqlCt</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">parquet</span><span class="p">(</span><span class="n">dataFile2</span><span class="p">)</span><span class="o">.</span><span class="n">cache</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">df1</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">parquet</span><span class="p">(</span><span class="n">dataFile1</span><span class="p">)</span><span class="o">.</span><span class="n">cache</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">df2</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">parquet</span><span class="p">(</span><span class="n">dataFile2</span><span class="p">)</span><span class="o">.</span><span class="n">cache</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">preprocessDF</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">cols</span><span class="p">):</span> 
         <span class="sd">&quot;&quot;&quot;</span>
@@ -11876,13 +11874,13 @@ div#notebook {
     <span class="k">def</span> <span class="nf">jaccardJoin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cols1</span><span class="p">,</span> <span class="n">cols2</span><span class="p">,</span> <span class="n">threshold</span><span class="p">):</span>
         <span class="n">newDF1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">preprocessDF</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">df1</span><span class="p">,</span> <span class="n">cols1</span><span class="p">)</span>
         <span class="n">newDF2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">preprocessDF</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">df2</span><span class="p">,</span> <span class="n">cols2</span><span class="p">)</span>
-        <span class="k">print</span> <span class="s2">&quot;Before filtering: </span><span class="si">%d</span><span class="s2"> pairs in total&quot;</span> <span class="o">%</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">df1</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">df2</span><span class="o">.</span><span class="n">count</span><span class="p">())</span> 
+        <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;Before filtering: </span><span class="si">%d</span><span class="s2"> pairs in total&quot;</span> <span class="o">%</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">df1</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">df2</span><span class="o">.</span><span class="n">count</span><span class="p">()))</span> 
 
         <span class="n">candDF</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">filtering</span><span class="p">(</span><span class="n">newDF1</span><span class="p">,</span> <span class="n">newDF2</span><span class="p">)</span>
-        <span class="k">print</span> <span class="s2">&quot;After Filtering: </span><span class="si">%d</span><span class="s2"> pairs left&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">candDF</span><span class="o">.</span><span class="n">count</span><span class="p">())</span>
+        <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;After Filtering: </span><span class="si">%d</span><span class="s2"> pairs left&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">candDF</span><span class="o">.</span><span class="n">count</span><span class="p">()))</span>
 
         <span class="n">resultDF</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">verification</span><span class="p">(</span><span class="n">candDF</span><span class="p">,</span> <span class="n">threshold</span><span class="p">)</span>
-        <span class="k">print</span> <span class="s2">&quot;After Verification: </span><span class="si">%d</span><span class="s2"> similar pairs&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">resultDF</span><span class="o">.</span><span class="n">count</span><span class="p">())</span>
+        <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;After Verification: </span><span class="si">%d</span><span class="s2"> similar pairs&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">resultDF</span><span class="o">.</span><span class="n">count</span><span class="p">()))</span>
 
         <span class="k">return</span> <span class="n">resultDF</span>
 
@@ -11898,9 +11896,9 @@ div#notebook {
     <span class="n">resultDF</span> <span class="o">=</span> <span class="n">er</span><span class="o">.</span><span class="n">jaccardJoin</span><span class="p">(</span><span class="n">amazonCols</span><span class="p">,</span> <span class="n">googleCols</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
 
     <span class="n">result</span> <span class="o">=</span> <span class="n">resultDF</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">id1</span><span class="p">,</span> <span class="n">row</span><span class="o">.</span><span class="n">id2</span><span class="p">))</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
-    <span class="n">groundTruth</span> <span class="o">=</span> <span class="n">sqlCt</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">parquet</span><span class="p">(</span><span class="s2">&quot;Amazon_Google_perfectMapping_sample&quot;</span><span class="p">)</span> \
+    <span class="n">groundTruth</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">parquet</span><span class="p">(</span><span class="s2">&quot;Amazon_Google_perfectMapping_sample&quot;</span><span class="p">)</span> \
                           <span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">idAmazon</span><span class="p">,</span> <span class="n">row</span><span class="o">.</span><span class="n">idGoogle</span><span class="p">))</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
-    <span class="k">print</span> <span class="s2">&quot;(precision, recall, fmeasure) = &quot;</span><span class="p">,</span> <span class="n">er</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">groundTruth</span><span class="p">)</span>
+    <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;(precision, recall, fmeasure) = &quot;</span><span class="p">,</span> <span class="n">er</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">groundTruth</span><span class="p">))</span>
 </pre></div>
 
 </div>
@@ -12004,7 +12002,7 @@ div#notebook {
 
 <span class="sd">        Comments: Since the goal of the &quot;filtering&quot; function is to avoid n^2 pair comparisons, </span>
 <span class="sd">                  you are NOT allowed to compute a cartesian join between $df1 and $df2 in the function. </span>
-<span class="sd">                  Please come up with a more efficient algorithm (see my hints below). </span>
+<span class="sd">                  Please come up with a more efficient algorithm (see hints in Lecture 2). </span>
 <span class="sd">    &quot;&quot;&quot;</span>
 </pre></div>
 
