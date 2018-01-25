@@ -11888,7 +11888,7 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="k">import</span> <span class="n">YouTubeVideo</span>
 <span class="n">YouTubeVideo</span><span class="p">(</span><span class="s2">&quot;8jvoTV54nXw&quot;</span><span class="p">)</span>
 </pre></div>
 
@@ -12049,13 +12049,16 @@ div#notebook {
 <p><strong>Data</strong></p>
 <p>The weather data on HDFS <code>/courses/732/tmax-{1,2,3}</code> spans a period from 2000 - 2016 and covers many stations around the globe. There are many possible questions to study. Use a python plotting library of your choice, such as matplotlib.</p>
 <p><strong>Task</strong></p>
-<p>a) Produce at least <strong>two figures</strong> that illustrate the <strong>max. temperature distribution over the entire globe</strong> and enable a comparison of <strong>different non-overlapping time periods</strong>.</p>
-<p>b) Produce two or more figures that show the result of your trained regression model from CMPT 732-A5:
-  <strong>(b1)</strong> evaluated at a grid of positions around the globe leading to a dense plot of temperatures that includes oceans, and 
-  <strong>(b2)</strong> in a separate plot show the regression error against test data at locations where data is given.</p>
+<p><strong>a)</strong> Produce at least <strong>two figures</strong> that illustrate the <strong>max. temperature distribution over the entire globe</strong> and enable a comparison of <strong>different non-overlapping time periods</strong>. Only show temperatures where you have data available. Here is an example from the web:
+<img src="http://c3headlines.typepad.com/.a/6a010536b58035970c013486e5c5e6970c-pi"/></p>
+<p><strong>b)</strong> Produce two or more figures that show the result of your trained regression model from CMPT 732-A5b:</p>
+<p><strong>(b1)</strong> Evaluate your model at a grid of latitude, longitude positions around the globe leading to a dense plot of temperatures that includes oceans. This could, for instance, look something like the following and may have some gaps, if you decide not to interpolate between grid points:
+<img src="http://www.physicalgeography.net/fundamentals/images/jan_temp.gif"/></p>
+<p><strong>(b2)</strong> In a separate plot show the regression error of your model predictions against test data. In this case only use locations where data is given, i.e. you may reuse your plotting method from Part 2 (a).</p>
 <p><strong>Comment</strong></p>
-<p>Note that any imperfections of your trained model that show up are fine. You are not marked for your previous model again, but rather for the methods you create to investigate it. 
-Do not worry about overlaying continent or country borders on your map, but make sure you use enough points such that the shape of some continents roughly emerges from the data distribution. You may train and visualize on any data subset with at least 100k rows.</p>
+<p>Note that any imperfections of your trained model that show up are fine. You are not marked for your previous model again, but rather for the methods you create to investigate it.</p>
+<p>Do not worry about overlaying continent or country borders on your map, but make sure you use enough points such that the shape of some continents roughly emerges from the data distribution. You may train and visualize on any data subset with at least 100k rows.</p>
+<p>For (b2) plot 1, you will need elevation information for the points you produce. Have a look at <a href="elevation_grid.py"><code>elevation_grid.py</code></a> for a possible way to augment this info and place the accompanying <a href="elevations_latlon.npy.gz">elevation data</a> in the same folder as the script. Import the module and see <code>help(evaluation_grid)</code> for further hints.</p>
 <p><strong>Submission</strong></p>
 <p>Combine the plots into a PDF document <code>weather_report.pdf</code> along with <strong>brief captions explaining the figures</strong>.
 Please provide your code as <code>weather_plot.py</code>. Your code may import <code>weather_hint.py</code> and <code>weather_tools.py</code> that were part of the old assigment CMPT 732-5B. However, ensure that all new code relevant for marking is in <code>weather_plot.py</code>. A Jupyter notebook <code>weather_report.ipynb</code> that contains the markdown to render and discuss the figures saved by <code>weather_plot.py</code> can also be submitted.</p>
