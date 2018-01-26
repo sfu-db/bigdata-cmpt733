@@ -5,12 +5,12 @@ Efficient, local elevation lookup using intermediate tile representation
 of world-wide SRTM elevation data.
 
 Example:
-from elevation_grid import get_elevation
-el = get_elevations(np.array([[49.3,123.1]]))
+import elevation_grid as eg
+el = eg.get_elevations(np.array([[49.3,123.1]]))
 
 import matplotlib.pyplot as plt
 lats, lons = np.meshgrid(np.arange(-90,90,.5),np.arange(-180,180,.5))
-elevs = [get_elevations(np.array([late,lone]).T) for late,lone in zip(lats,lons)]
+elevs = [eg.get_elevations(np.array([late,lone]).T) for late,lone in zip(lats,lons)]
 plt.pcolormesh(lons,lats,elevs,cmap='terrain')
 plt.colorbar()
 plt.show()
@@ -59,7 +59,7 @@ def make_elevation_grid():
                     print('Error producing tile {}, {}'.format(lati,loti))
                     pass
                 np.save('tiles_latlon.npy', tiles_latlon)
-    
+    cleanup_elevation_grid()
     # broken_tiles = ['N21E035.hgt', 'N22E035.hgt', 'N24E035.hgt', 'N25E035.hgt', 'N26E035.hgt', 
     #                 'N27E035.hgt', 'N28E035.hgt', 'N27E039.hgt', 'N28E035.hgt', 'N28E039.hgt',
     #                 'N29E039.hgt', ]
@@ -69,8 +69,8 @@ try:
     fh = gzip.open('elevations_latlon.npy.gz','rb')
 except:
     fh = open('elevations_latlon.npy','rb')
-
 elevgrid = np.load(fh)
+fh.close()
 
 def get_elevations(latlon):
     """For latlon being a N x 2 np.array of latitude, longitude pairs, output an
