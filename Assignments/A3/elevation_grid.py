@@ -69,8 +69,8 @@ def make_elevation_grid():
             if tiles_latlon[k][l] is None:      # only compute what we don't yet have
                 try:
                     tiles_latlon[k][l] = ed.get_image((tile_size,tile_size),
-                                                      (lati,lati+10),
-                                                      (loti,loti+10),
+                                                      (lati,lati+tile_degrees),
+                                                      (loti,loti+tile_degrees),
                                                       10000,
                                                       mode='array')
                 except:
@@ -101,7 +101,7 @@ def get_elevations(latlon):
     """For latlon being a N x 2 np.array of latitude, longitude pairs, output an
        array of length N giving the corresponding elevations in meters.
     """
-    lli = ((latlon + (90,180))*(tile_size/tile_degrees)).astype(int)
+    lli = ((latlon + (90,180))*(float(tile_size)/tile_degrees)).astype(int)
     return elevgrid[lli[:,0],lli[:,1]]
 
 def get_elevation(lat, lon):
