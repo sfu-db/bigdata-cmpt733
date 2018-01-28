@@ -19,7 +19,7 @@ elevs = [eg.get_elevations(np.array([late,lone]).T) for late,lone in zip(lats,lo
 
 plt.pcolormesh(lons,lats,elevs,cmap='terrain')
 plt.colorbar()
-plt.show()
+# plt.show()
 """
 
 import numpy as np
@@ -39,7 +39,7 @@ def make_elevation_grid():
     """ Uses SRTM.py to create an intermediate elevation tile representation and
     concatenates the tiles into a single array that can be indexed via latitude and longitude.
     
-    Note, this takes a long time and downloads about 50GB of data.
+    Note, this takes a long time and downloads about 62 GB of data.
     Don't run this if the elevation grid is already available.
     """
     def cleanup_elevation_grid():
@@ -97,13 +97,40 @@ except:
     print("Warning: There was a problem initializing the elevation array from {}[.gz]".format(elev_fname))
     print("         Consider to run make_elevation_grid()")
 
-def get_elevations(latlon):
-    """For latlon being a N x 2 np.array of latitude, longitude pairs, output an
+def get_elevations(latlons):
+    """For latlons being a N x 2 np.array of latitude, longitude pairs, output an
        array of length N giving the corresponding elevations in meters.
     """
-    lli = ((latlon + (90,180))*(float(tile_size)/tile_degrees)).astype(int)
+    lli = ((latlons + (90,180))*(float(tile_size)/tile_degrees)).astype(int)
     return elevgrid[lli[:,0],lli[:,1]]
 
-def get_elevation(lat, lon):
+def get_elevation(lat, lon, get_elevations=get_elevations):
     """Lookup elevation in m"""
     return get_elevations(np.array([[lat,lon]]))[0]
+
+import requests
+def request_elevations(latlons):
+    """Obtain elevations from open-elevation.com"""
+    reqjson = dict(locations=[dict(latitude=float(lat),longitude=float(lon)) for lat,lon in latlons])
+    r = requests.post('https://api.open-elevation.com/api/v1/lookup', json=reqjson)
+    assert r, "Error making open elevation bulk request"
+    return [el['elevation'] for el in r.json()['results']]
+
+#-----------------------------------------------------------------------------
+import unittest
+
+# from command line: python -m unittest elevation_grid.py
+
+class TestElevationLookups(unittest.TestCase):
+    def test_elevations(self):
+        """ Compare SRTM against open-elevation.com info """
+        tol_m = 100    
+        lats, lons = np.meshgrid(np.arange(48, 53, 1), np.arange(118, 122, 1));
+        latlons = np.stack([lats.flatten(), lons.flatten()]).T;
+        latlons = np.concatenate([latlons, latlons+.1])
+        rev = np.array(request_elevations(latlons))
+        gev = get_elevations(latlons)
+        np.set_printoptions(suppress=True)
+        self.assertTrue(abs((rev-gev)).max() < tol_m, np.stack((latlons[:,0],latlons[:,1],rev,gev,rev-gev)).T)
+        print('    lat', '    lon', 'open-elev.', 'srtm-array', 'difference')
+        print(np.stack((latlons[:,0],latlons[:,1],rev,gev,rev-gev)).T)
