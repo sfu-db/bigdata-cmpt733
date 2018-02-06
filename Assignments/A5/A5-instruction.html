@@ -11800,7 +11800,7 @@ div#notebook {
 <li>p(re)trained networks for image classification</li>
 <li>basic visualization of some network aspects.</li>
 </ul>
-<h2 id="Getting-ready">Getting ready<a class="anchor-link" href="#Getting-ready">&#182;</a></h2><p>You can either go and use a desktop in the big data lab or remote login to one of the machines via <a href="http://www.sfu.ca/computing/about/support/csil/how-to-remote-access-to-csil.html">CSIL CPU servers</a>.</p>
+<h2 id="Check-the-GPU-setup">Check the GPU setup<a class="anchor-link" href="#Check-the-GPU-setup">&#182;</a></h2><p>You can either go and use a desktop in the big data lab or remote login to one of the machines via <a href="http://www.sfu.ca/computing/about/support/csil/how-to-remote-access-to-csil.html">CSIL CPU servers</a>.</p>
 <p>When you're at a machine run <code>nvidia-smi</code> to see the available card and its memory usage.</p>
 
 </div>
@@ -11851,7 +11851,17 @@ screen───bash───jupyter-noteboo───python─┬─4*[python]
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In the following we are going to use <strong><a href="http://pytorch.org">pytorch</a></strong>, which received some praise recently for being faster than <a href="http://tensorflow.org">tensorflow</a> and for also having a nice high-level API as NN modules that are similar to <a href="https://keras.io/">Keras</a>. In order to use any of these libraries in Python, I suggest you use the dlenv conda environment.</p>
+<h2 id="Set-up-pytorch-in-the-lab">Set up pytorch in the lab<a class="anchor-link" href="#Set-up-pytorch-in-the-lab">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In the following we are going to use <strong><a href="http://pytorch.org">pytorch</a></strong>, which received some praise recently for being faster than <a href="http://tensorflow.org">tensorflow</a> and for also having a nice high-level API as NN modules that are similar to <a href="https://keras.io/">Keras</a>.</p>
+<p>As of Tue, Feb 6, the lab has a working pytorch setup in <code>/opt/ancaconda3</code>, e.g. check for yourself by running <code>conda list | grep torch</code>.</p>
+<p>However, if there are problems there is an alternative dlenv conda environment for you to use as shown below.</p>
 
 </div>
 </div>
@@ -11883,7 +11893,7 @@ ln -s /usr/shared/CMPT/big-data/tmp_py/.torch/models/* ~/.torch/models</code></p
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="More-to-come">More to come<a class="anchor-link" href="#More-to-come">&#182;</a></h2>
+<h2 id="Learn-about-Pytorch-usage">Learn about Pytorch usage<a class="anchor-link" href="#Learn-about-Pytorch-usage">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -11891,8 +11901,69 @@ ln -s /usr/shared/CMPT/big-data/tmp_py/.torch/models/* ~/.torch/models</code></p
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Further details of this assignment are going to be posted later this Tuesday.
-Meanwhile, you may want to familiarize yourself with the <a href="http://pytorch.org/tutorials/beginner/pytorch_with_examples.html">PyTorch Examples</a>.</p>
+<p>To familiarize yourself with using pytorch, have a look at the <a href="http://pytorch.org/tutorials/beginner/pytorch_with_examples.html">Examples</a>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Task:-Use-a-pretrained-model">Task: Use a pretrained model<a class="anchor-link" href="#Task:-Use-a-pretrained-model">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As mentioned in class deep learning systems are hardly ever developed from scratch, but usually work by refining existing solutions to similar problems. For the following task, we'll work through the 
+<a href="http://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html">Transfer learning tutorial</a>, which also provides a ready-made jupyter notebook.</p>
+<ol>
+<li>Download the notebook and get it to run in your environment. This also involves downloading the bees and ants dataset.</li>
+<li>Perform your own training with the provided setup.</li>
+<li>Change the currently chosen pretrained network (resnet) to a different one. At least try out VGG and one other type.</li>
+</ol>
+<h3 id="Hints-for-step-3">Hints for step 3<a class="anchor-link" href="#Hints-for-step-3">&#182;</a></h3><p>Focus on the section <strong>Conv net as fixed feature xtractor</strong> of the transfer learning tutorial.
+First, change the line</p>
+
+<pre><code>model_conv = torchvision.models.resnet18(pretrained=True)</code></pre>
+<p>to load VGG19 instead.</p>
+<p>Next, print out the new model_conv and identify the last step of the classification. This is not named the same way as the <code>fc</code> layer for resnet, but works similarity. Identify the module that contains the last classification step of the VGG model, which identifies one out of 1000 classes. Change that one into identifying 2 classes only (i.e. the ants and bees that you should start with).</p>
+<p>To change the structure of a hypothetical sequential component called <code>module_name</code> and modify its last layer into a DifferentLayer type, you can use this syntax.</p>
+
+<pre><code>nn.Sequential(*list(model_conv.module_name.children())[:-1] +
+                     [nn.DifferentLayer(...)])</code></pre>
+<p>and replace the old model_conv.module_name with the differently structured version.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Stay-tuned">Stay tuned<a class="anchor-link" href="#Stay-tuned">&#182;</a></h3><p>A further update of this instruction set is planned later today. So, please check back.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Submission">Submission<a class="anchor-link" href="#Submission">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For now, your submission preparation should be based on a modified version of the transfer learning tutorial workbook that contains three parts.
+The top portion that loads the basic dataset and trains the basic network.</p>
+<p>Then the conv net as feature extractor section should switch to the VGG network and perform classification of ants and bees using it.</p>
 
 </div>
 </div>
