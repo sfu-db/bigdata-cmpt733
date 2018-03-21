@@ -11816,7 +11816,7 @@ div#notebook {
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>With the same kind of preparation as in <a href="../A5/A5-instruction.html">Assignment 5</a> we are going to use <strong><a href="http://pytorch.org">pytorch</a></strong> for the deep learning aspects of the assignment.</p>
 <p>There is a pytorch setup in the big data under the globally available anaconda installation.
-However, it is recommended that you use the custom <strong>delenv</strong> conda environment that contains all python package dependencies that are relevant for this assignment (and also tensorflow, keras, etc.).</p>
+However, it is recommended that you use the custom <strong>dlenv</strong> conda environment that contains all python package dependencies that are relevant for this assignment (and also nltk, gensim, tensorflow, keras, etc.).</p>
 
 </div>
 </div>
@@ -11994,7 +11994,7 @@ ln -s /usr/shared/CMPT/big-data/tmp_py/dlenv .conda/envs</code></pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In this task you will get to use a sophisticated and a simple model of text sentiment analysis. To keep things simple, you will receive almost all the code and are just left with the task to tune the given algorithms, see the part about instrumentation below.</p>
+<p>In this task you will get to use a learning and a rule-based model of text sentiment analysis. To keep things simple, you will receive almost all the code and are just left with the task to tune the given algorithms, see the part about instrumentation below.</p>
 
 </div>
 </div>
@@ -12221,7 +12221,7 @@ ln -s /usr/shared/CMPT/big-data/tmp_py/dlenv .conda/envs</code></pre>
 <div class="prompt input_prompt">In&nbsp;[72]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO: tune these parameters to improve the performance of the model</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO: after instrumention (see below) tune these parameters to improve the performance of the model</span>
 <span class="n">EPOCHS</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="n">USE_GPU</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span>
 <span class="c1">#EMBEDDING_TYPE = &#39;glove&#39;</span>
@@ -12390,10 +12390,10 @@ ln -s /usr/shared/CMPT/big-data/tmp_py/dlenv .conda/envs</code></pre>
 
  
  
-<div id="04882069-ac1d-4816-9230-d8298d1674fd"></div>
+<div id="b988f470-aaa4-4776-8a37-05a7cfc9b893"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#04882069-ac1d-4816-9230-d8298d1674fd');
+var element = $('#b988f470-aaa4-4776-8a37-05a7cfc9b893');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "8da61d157c0a46d0b2a8d46ca02e1c4c", "version_major": 2, "version_minor": 0}
@@ -12448,10 +12448,10 @@ Dev: loss 6.75 acc 60.6
 
  
  
-<div id="7e0bb9a5-6e2b-4246-acc4-42bca2522149"></div>
+<div id="d3f40980-32a9-4755-ad2c-95462fee95a2"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#7e0bb9a5-6e2b-4246-acc4-42bca2522149');
+var element = $('#d3f40980-32a9-4755-ad2c-95462fee95a2');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "7fe2518a21b945ee99727becbd775e88", "version_major": 2, "version_minor": 0}
@@ -12484,10 +12484,10 @@ Test: loss 7.57 acc 58.7
 
  
  
-<div id="31058c7e-a25c-4f5f-8bdc-5b4f5298dde8"></div>
+<div id="73eaf121-265a-46aa-a36e-aa0ac03e4909"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#31058c7e-a25c-4f5f-8bdc-5b4f5298dde8');
+var element = $('#73eaf121-265a-46aa-a36e-aa0ac03e4909');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "fddf6503a0084880bb046e98342c341b", "version_major": 2, "version_minor": 0}
@@ -12520,10 +12520,10 @@ Test: loss 7.40 acc 76.7
 
  
  
-<div id="8fec933b-99f4-45ba-ac31-021e9eeefb82"></div>
+<div id="bfdc59ab-5c51-430c-94a4-20ea8fc5f045"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#8fec933b-99f4-45ba-ac31-021e9eeefb82');
+var element = $('#bfdc59ab-5c51-430c-94a4-20ea8fc5f045');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "d6425d912f2243a3bf6f86c133fba605", "version_major": 2, "version_minor": 0}
@@ -12555,10 +12555,10 @@ Dev: loss 7.08 acc 73.7
 
  
  
-<div id="9470869a-5a2e-4a35-b777-10903779d19d"></div>
+<div id="c842c493-5b83-48e6-9a93-caa440f0246d"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#9470869a-5a2e-4a35-b777-10903779d19d');
+var element = $('#c842c493-5b83-48e6-9a93-caa440f0246d');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "e196d1dcf99243099521edb64e4184a1", "version_major": 2, "version_minor": 0}
@@ -12753,7 +12753,7 @@ Final Test: loss 8.99 acc 56.8
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Save this notebook containing all cell output and upload your submission as one <code>A9.ipynb</code> file.
+<p>Save <a href="A9.ipynb">this notebook</a> containing all cell output and upload your submission as one <code>A9.ipynb</code> file.
 Also, include the screenshot of your tensorboard debugging session as <code>tensorboard.png</code>.</p>
 
 </div>
@@ -12763,7 +12763,7 @@ Also, include the screenshot of your tensorboard debugging session as <code>tens
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Some-detail-notes-about-the-dlenv-environment-(not-needed-for-this-assignment,-but-maybe-for-your-project)">Some detail notes about the dlenv environment (not needed for this assignment, but maybe for your project)<a class="anchor-link" href="#Some-detail-notes-about-the-dlenv-environment-(not-needed-for-this-assignment,-but-maybe-for-your-project)">&#182;</a></h3><p>Tensorflow is available in its GPU version now (v1.4.1 based on CUDA 8.0) - before it was installed in this environment to only run on the CPU.</p>
+<h3 id="Some-detail-notes-about-the-dlenv-environment-(not-needed-for-this-assignment,-but-maybe-for-your-project)">Some detail notes about the dlenv environment (not needed for this assignment, but maybe for your project)<a class="anchor-link" href="#Some-detail-notes-about-the-dlenv-environment-(not-needed-for-this-assignment,-but-maybe-for-your-project)">&#182;</a></h3><p>Tensorflow is available in its GPU version now (v1.4.1 based on CUDA 8.0) - before, it was installed in this environment to only run on the CPU.</p>
 <p>Also, PyTorch is compiled from github using CUDA 9.1, giving the current version 0.4. This enables a feature that was broken for the past two releases - adding the computational graph of any convolutional network model to a tensorboard visualization, e.g. see <code>demo_graph.py</code> and other demos in <a href="https://github.com/lanpa/tensorboard-pytorch">this repo</a>, if you'd like to learn more.</p>
 
 </div>
