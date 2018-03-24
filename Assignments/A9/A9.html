@@ -11815,7 +11815,7 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>With the same kind of preparation as in <a href="../A5/A5-instruction.html">Assignment 5</a> we are going to use <a href="http://pytorch.org">pytorch</a> for the deep learning aspects of the assignment.</p>
-<p>There is a <code>pytorch</code> setup in the big lab data under the globally available anaconda installation.
+<p>There is a <code>pytorch</code> setup in the big data lab under the globally available anaconda installation.
 However, it is recommended that you use the custom <strong>dlenv</strong> conda environment that contains all python package dependencies that are relevant for this assignment (and also nltk, gensim, tensorflow, keras, and tensorboard).</p>
 
 </div>
@@ -12044,7 +12044,7 @@ similar to <code>woman + king - man</code>. Note that gensim's API allows you to
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>First let's create a simple LSTM model that is capable of producing a lable for a sequence of vector encoded words, based on code from <a href="https://github.com/clairett/pytorch-sentiment-classification">this repo</a>.</p>
+<p>First let's create a simple LSTM model that is capable of producing a label for a sequence of vector encoded words, based on code from <a href="https://github.com/clairett/pytorch-sentiment-classification">this repo</a>.</p>
 
 </div>
 </div>
@@ -12261,7 +12261,7 @@ similar to <code>woman + king - man</code>. Note that gensim's API allows you to
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>TODO:</strong> After instrumention with the summary writer (see further below), tune these parameters to improve the performance of the model.</p>
+<p><strong>TODO:</strong> After instrumentation with the summary writer (see further below), tune these parameters to improve the performance of the model.</p>
 
 </div>
 </div>
@@ -12466,7 +12466,6 @@ similar to <code>woman + king - man</code>. Note that gensim's API allows you to
     <span class="n">ss</span> <span class="o">=</span> <span class="n">sid</span><span class="o">.</span><span class="n">polarity_scores</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span>
     <span class="n">lab_vpred</span><span class="p">[</span><span class="n">k</span><span class="p">,:]</span> <span class="o">=</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">ss</span><span class="p">[</span><span class="s1">&#39;compound&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">label</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;vader acc: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="nb">abs</span><span class="p">(</span><span class="n">lab_vpred</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">lab_vpred</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()))</span>
-<span class="n">writer</span><span class="o">.</span><span class="n">add_scalar</span><span class="p">(</span><span class="s1">&#39;Final/VaderAcc&#39;</span><span class="p">,</span> <span class="n">acc</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12538,7 +12537,6 @@ similar to <code>woman + king - man</code>. Note that gensim's API allows you to
 <span class="n">prednp</span> <span class="o">=</span> <span class="n">pred</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
 <span class="n">lstm_acc</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="nb">abs</span><span class="p">(</span><span class="n">prednp</span><span class="o">-</span><span class="n">labelsnp</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;(Bi-)LSTM acc: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">lstm_acc</span><span class="p">))</span>
-<span class="n">writer</span><span class="o">.</span><span class="n">add_scalar</span><span class="p">(</span><span class="s1">&#39;Final/LSTMAcc&#39;</span><span class="p">,</span> <span class="n">lstm_acc</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12595,8 +12593,8 @@ Also, include the screenshot of your tensorboard debugging session as <code>tens
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Some-detail-notes-about-the-dlenv-environment-(not-needed-for-this-assignment,-but-maybe-for-your-project)">Some detail notes about the dlenv environment (not needed for this assignment, but maybe for your project)<a class="anchor-link" href="#Some-detail-notes-about-the-dlenv-environment-(not-needed-for-this-assignment,-but-maybe-for-your-project)">&#182;</a></h3><p>Tensorflow is available in its GPU version now (v1.4.1 based on CUDA 8.0) - before, it was installed in this environment to only run on the CPU.</p>
-<p>Also, PyTorch is compiled from github using CUDA 9.1, giving the current version 0.4. This enables a feature that was broken for the past two releases - adding the computational graph of any convolutional network model to a tensorboard visualization, e.g. see <code>demo_graph.py</code> and other demos in <a href="https://github.com/lanpa/tensorboard-pytorch">this repo</a>, if you'd like to learn more.</p>
+<h3 id="Some-detail-notes-about-the-dlenv-environment-(not-needed-for-this-assignment,-but-maybe-for-your-project)">Some detail notes about the dlenv environment (not needed for this assignment, but maybe for your project)<a class="anchor-link" href="#Some-detail-notes-about-the-dlenv-environment-(not-needed-for-this-assignment,-but-maybe-for-your-project)">&#182;</a></h3><p>Tensorflow is available in its GPU version now (v1.7.0-rc1 based on CUDA 9.1) - before, it was installed in this environment to only run on CPU.</p>
+<p>Also, PyTorch v0.4 is compiled from its github repo using CUDA 9.1. This enables a feature that was broken for the past two releases - adding the computational graph of any (non-recurrent) convolutional network model to a tensorboard visualization, e.g. see <code>demo_graph.py</code> and other demos in <a href="https://github.com/lanpa/tensorboard-pytorch">this repo</a>, if you'd like to learn more.</p>
 
 </div>
 </div>
