@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<title>A5-instruction</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>A9</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 <style type="text/css">
@@ -11775,7 +11775,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Assignment-5---Recognizing-objects-in-images-with-deep-learning">Assignment 5 - Recognizing objects in images with deep learning<a class="anchor-link" href="#Assignment-5---Recognizing-objects-in-images-with-deep-learning">&#182;</a></h1>
+<h1 id="Assignment-9---NLP-using-Deep-Learning">Assignment 9 - NLP using Deep Learning<a class="anchor-link" href="#Assignment-9---NLP-using-Deep-Learning">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -11791,16 +11791,13 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In this assignment you will get to know the main ingredients of deep learning and get started using the GPUs available in the Big Data Lab.</p>
+<p>In this assignment you will get to work with recurrent network architectures with application to language processing tasks and observe behaviour of the learning using tensorboard visualization.</p>
 <p>You'll learn to use</p>
 <ul>
-<li>tensors</li>
-<li>automatic differentiation</li>
-<li>layered learners</li>
-<li>p(re)trained networks for image classification.</li>
+<li>word embeddings,</li>
+<li>LSTMs,</li>
+<li>tensorboard visualization to develop and tune deep learning architectures.</li>
 </ul>
-<h2 id="Check-the-GPU-setup">Check the GPU setup<a class="anchor-link" href="#Check-the-GPU-setup">&#182;</a></h2><p>You can either go and use a desktop in the big data lab or remote login to one of the machines via <a href="http://www.sfu.ca/computing/about/support/csil/how-to-remote-access-to-csil.html">CSIL CPU servers</a>.</p>
-<p>When you're at a machine run <code>nvidia-smi</code> to see the available card and its memory usage.</p>
 
 </div>
 </div>
@@ -11809,31 +11806,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
-<pre><code>$ nvidia-smi
-Mon Feb  5 08:03:15 2018       
-+-----------------------------------------------------------------------------+
-| NVIDIA-SMI 390.12                 Driver Version: 390.12                    |
-|-------------------------------+----------------------+----------------------+
-| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
-| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
-|===============================+======================+======================|
-|   0  GeForce GTX 105...  Off  | 00000000:01:00.0  On |                  N/A |
-| 45%   24C    P8    N/A /  75W |   3087MiB /  4038MiB |      0%      Default |
-+-------------------------------+----------------------+----------------------+
-
-+-----------------------------------------------------------------------------+
-| Processes:                                                       GPU Memory |
-|  GPU       PID   Type   Process name                             Usage      |
-|=============================================================================|
-|    0      3627      G   /usr/lib/xorg/Xorg                           169MiB |
-|    0     10843      C   ...d/CMPT/big-data/tmp_py/dlenv/bin/python  2897MiB |
-+-----------------------------------------------------------------------------+
-
-(dlenv) sbergner@asb10928u-e04:~/Teaching$ pstree -ls 10843
-screen───bash───jupyter-noteboo───python─┬─4*[python]
-                                         └─26*[{python}]</code></pre>
-
+<h2 id="Use-the-deep-learning-environment-in-the-lab">Use the deep learning environment in the lab<a class="anchor-link" href="#Use-the-deep-learning-environment-in-the-lab">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -11841,26 +11814,9 @@ screen───bash───jupyter-noteboo───python─┬─4*[python]
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This shows that we have an <strong>NVIDIA GTX 1050 with 4G of RAM</strong>. Also, you can see that I'm running a process (pid=10843) that currently takes up close to 3G of GPU memory. Inside a shell window you may use <code>who</code>, <code>ps -aux</code>, or <code>pstree -ls &lt;PID&gt;</code> to find out who to contact about your shared resources. In my case, it turns out that I'm running a jupyter notebook related to process 10843. Halting and closing the notebook frees up the memory.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Set-up-PyTorch-in-the-lab">Set up PyTorch in the lab<a class="anchor-link" href="#Set-up-PyTorch-in-the-lab">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>In the following we are going to use <strong><a href="http://pytorch.org">pytorch</a></strong>, which received some praise recently for being faster than <a href="http://tensorflow.org">tensorflow</a> and for also having a nice high-level API as NN modules that are similar to <a href="https://keras.io/">Keras</a>.</p>
-<p>As of Tue, Feb 6, the lab has a working pytorch setup in <code>/opt/ancaconda3</code>, e.g. check for yourself by running <code>conda list | grep torch</code>.</p>
-<p>However, if there are problems there is an alternative dlenv conda environment for you to use as shown below.</p>
+<p>With the same kind of preparation as in <a href="../A5/A5-instruction.html">Assignment 5</a> we are going to use <a href="http://pytorch.org">pytorch</a> for the deep learning aspects of the assignment.</p>
+<p>There is a <code>pytorch</code> setup in the big data lab under the globally available anaconda installation.
+However, it is recommended that you use the custom <strong>dlenv</strong> conda environment that contains all python package dependencies that are relevant for this assignment (and also nltk, gensim, tensorflow, keras, and tensorboard).</p>
 
 </div>
 </div>
@@ -11880,10 +11836,6 @@ ln -s /usr/shared/CMPT/big-data/tmp_py/dlenv .conda/envs</code></pre>
 <p>and from thereon simply use</p>
 
 <pre><code>source activate dlenv</code></pre>
-<h3 id="Use-our-downloaded-pre-built-models">Use our downloaded pre-built models<a class="anchor-link" href="#Use-our-downloaded-pre-built-models">&#182;</a></h3><p>Also, link the pre-built models that we already downloaded for you (about 1.6G):</p>
-
-<pre><code>mkdir -p ~/.torch/models
-ln -s /usr/shared/CMPT/big-data/tmp_py/.torch/models/* ~/.torch/models</code></pre>
 
 </div>
 </div>
@@ -11892,7 +11844,31 @@ ln -s /usr/shared/CMPT/big-data/tmp_py/.torch/models/* ~/.torch/models</code></p
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Learn-about-PyTorch-usage">Learn about PyTorch usage<a class="anchor-link" href="#Learn-about-PyTorch-usage">&#182;</a></h2>
+<p>Also, there are some relevant datasets available in our shared folder.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">bdenv_loc</span> <span class="o">=</span> <span class="s1">&#39;/usr/shared/CMPT/big-data&#39;</span>
+<span class="n">bdata</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">bdenv_loc</span><span class="p">,</span><span class="s1">&#39;data&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Task-1:-Explore-Word-Embeddings">Task 1: Explore Word Embeddings<a class="anchor-link" href="#Task-1:-Explore-Word-Embeddings">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -11900,7 +11876,103 @@ ln -s /usr/shared/CMPT/big-data/tmp_py/.torch/models/* ~/.torch/models</code></p
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>To familiarize yourself with using pytorch, have a look at the <a href="http://pytorch.org/tutorials/beginner/pytorch_with_examples.html">Examples</a>.</p>
+<p>Word embeddings are mappings between words and multi-dimensional vectors, where the difference between two word vectors has some relationship with the meaning of the corresponding words, i.e. words that are similar in meaning are mapped closely together (ideally). This part of the assignment should enable you to</p>
+<ul>
+<li>Load a pretrained word embedding</li>
+<li>Perform basic operations, such as distance queries and evaluate simple analogies</li>
+</ul>
+<p>Note, each of the tasks below can be addressed with one or two lines of code using the <a href="https://radimrehurek.com/gensim/models/word2vec.html">word2vec API in gensim</a>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[70]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">gensim</span>
+<span class="c1"># Load Google&#39;s pre-trained Word2Vec model, trained on news articles</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">gensim</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">KeyedVectors</span><span class="o">.</span><span class="n">load_word2vec_format</span><span class="p">(</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">bdata</span><span class="p">,</span><span class="s1">&#39;GoogleNews-vectors-negative300.bin&#39;</span><span class="p">),</span> <span class="n">binary</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Obtain a vector representation for a word of your choice.
+To confirm that this worked, print out the number of elements of the vector.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[68]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">...</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[68]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(300,)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Determine the 10 words that are closest in the embedding to the word vector you produced above.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">...</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Are the nearest neighbours similar in meaning?
+Try different seed words, until you find one whose neighbourhood looks OK.</p>
 
 </div>
 </div>
@@ -11909,7 +11981,53 @@ ln -s /usr/shared/CMPT/big-data/tmp_py/.torch/models/* ~/.torch/models</code></p
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Task-1:-Finding-rectangles">Task 1: Finding rectangles<a class="anchor-link" href="#Task-1:-Finding-rectangles">&#182;</a></h1>
+<p>Using a combination of positive and negative words, find out which word is most
+similar to <code>woman + king - man</code>. Note that gensim's API allows you to combine positive and negative words without explicitly obtaing their vectors.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">...</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>You may find that the results of most word analogy combinations don't work as well as we'd hope.</p>
+<p>Explore a bit and <em>show two more cases</em> where the output of gensim's built-in word vector algebra looks somewhat meaningful, i.e. show more word analogy examples or produce lists of words where a word that doesn't match is identified.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">...</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Task-2:-Sequence-modeling-with-RNNs">Task 2: Sequence modeling with RNNs<a class="anchor-link" href="#Task-2:-Sequence-modeling-with-RNNs">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -11917,7 +12035,16 @@ ln -s /usr/shared/CMPT/big-data/tmp_py/.torch/models/* ~/.torch/models</code></p
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>A nice blog-post by <a href="https://towardsdatascience.com/object-detection-with-neural-networks-a4e2c46b4491">Johannes Rieke</a> presents a simple setup from scratch that finds rectangles in a black &amp; white image. In order to play with it, we just have to translate a few calls from Keras to PyTorch.</p>
+<p>In this task you will get to use a learning and a rule-based model of text sentiment analysis. To keep things simple, you will receive almost all the code and are just left with the task to tune the given algorithms, see the part about instrumentation below.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>First let's create a simple LSTM model that is capable of producing a label for a sequence of vector encoded words, based on code from <a href="https://github.com/clairett/pytorch-sentiment-classification">this repo</a>.</p>
 
 </div>
 </div>
@@ -11928,127 +12055,47 @@ ln -s /usr/shared/CMPT/big-data/tmp_py/.torch/models/* ~/.torch/models</code></p
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
 <span class="kn">from</span> <span class="nn">torch.autograd</span> <span class="k">import</span> <span class="n">Variable</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">matplotlib</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="k">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Markdown</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
 
-<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="k">class</span> <span class="nc">LSTMSentiment</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
 
-<span class="c1"># Create images with random rectangles and bounding boxes. </span>
-<span class="n">num_imgs</span> <span class="o">=</span> <span class="mi">50000</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">embedding_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">,</span> <span class="n">label_size</span><span class="p">,</span>
+                 <span class="n">use_gpu</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">dropout</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">bidirectional</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Prepare individual layers&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">LSTMSentiment</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span> <span class="o">=</span> <span class="n">hidden_dim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">use_gpu</span> <span class="o">=</span> <span class="n">use_gpu</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span> <span class="o">=</span> <span class="n">batch_size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dropout</span> <span class="o">=</span> <span class="n">dropout</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_directions</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">bidirectional</span> <span class="k">else</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">embeddings</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="n">vocab_size</span><span class="p">,</span> <span class="n">embedding_dim</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lstm</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">LSTM</span><span class="p">(</span><span class="n">input_size</span><span class="o">=</span><span class="n">embedding_dim</span><span class="p">,</span> <span class="n">hidden_size</span><span class="o">=</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="n">bidirectional</span><span class="o">=</span><span class="n">bidirectional</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden2label</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden_dim</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">num_directions</span><span class="p">,</span> <span class="n">label_size</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">init_hidden</span><span class="p">()</span>
 
-<span class="n">img_size</span> <span class="o">=</span> <span class="mi">8</span>
-<span class="n">min_object_size</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">max_object_size</span> <span class="o">=</span> <span class="mi">4</span>
-<span class="n">num_objects</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">def</span> <span class="nf">init_hidden</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Choose appropriate size and type of hidden layer&quot;&quot;&quot;</span>
+        <span class="c1"># first is the hidden h</span>
+        <span class="c1"># second is the cell c</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_gpu</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">Variable</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_directions</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">)</span><span class="o">.</span><span class="n">cuda</span><span class="p">()),</span>
+                    <span class="n">Variable</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_directions</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">)</span><span class="o">.</span><span class="n">cuda</span><span class="p">()))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">Variable</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_directions</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">)),</span>
+                    <span class="n">Variable</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_directions</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">)))</span>
 
-<span class="n">bboxes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_imgs</span><span class="p">,</span> <span class="n">num_objects</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-<span class="n">imgs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_imgs</span><span class="p">,</span> <span class="n">img_size</span><span class="p">,</span> <span class="n">img_size</span><span class="p">))</span>  <span class="c1"># set background to 0</span>
-
-<span class="k">for</span> <span class="n">i_img</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_imgs</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">i_object</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_objects</span><span class="p">):</span>
-        <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">min_object_size</span><span class="p">,</span> <span class="n">max_object_size</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">img_size</span> <span class="o">-</span> <span class="n">w</span><span class="p">)</span>
-        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">img_size</span> <span class="o">-</span> <span class="n">h</span><span class="p">)</span>
-        <span class="n">imgs</span><span class="p">[</span><span class="n">i_img</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="o">+</span><span class="n">w</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span><span class="n">y</span><span class="o">+</span><span class="n">h</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.</span>  <span class="c1"># set rectangle to 1</span>
-        <span class="n">bboxes</span><span class="p">[</span><span class="n">i_img</span><span class="p">,</span> <span class="n">i_object</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">]</span>
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sentence</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Use the layers of this model to propagate input and return class log probabilities&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_gpu</span><span class="p">:</span>
+            <span class="n">sentence</span> <span class="o">=</span> <span class="n">sentence</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">embeddings</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sentence</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">lstm_out</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lstm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden</span><span class="p">)</span>
         
-<span class="n">imgs</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">bboxes</span><span class="o">.</span><span class="n">shape</span>
-
-<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;**Here is an example of the training data:**&#39;</span><span class="p">))</span>
-<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">imgs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greys&#39;</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">img_size</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">img_size</span><span class="p">])</span>
-<span class="k">for</span> <span class="n">bbox</span> <span class="ow">in</span> <span class="n">bboxes</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">patches</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">((</span><span class="n">bbox</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">bbox</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">bbox</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">bbox</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">ec</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">))</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-
-<div class="output_markdown rendered_html output_subarea ">
-<p><strong>Here is an example of the training data:</strong></p>
-
-</div>
-
-</div>
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-
-
-<div class="output_png output_subarea ">
-<img src="data:image/png;base64,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
-"
->
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Reshape and normalize the image data to mean 0 and std 1. </span>
-<span class="n">X</span> <span class="o">=</span> <span class="p">(</span><span class="n">imgs</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">num_imgs</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">imgs</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">imgs</span><span class="p">)</span>
-<span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-
-<span class="c1"># Normalize x, y, w, h by img_size, so that all values are between 0 and 1.</span>
-<span class="c1"># Important: Do not shift to negative values (e.g. by setting to mean 0), because the IOU calculation needs positive w and h.</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">bboxes</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">num_imgs</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">img_size</span>
-<span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-
-<span class="c1"># Split training and test.</span>
-<span class="n">i</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">0.8</span> <span class="o">*</span> <span class="n">num_imgs</span><span class="p">)</span>
-<span class="n">train_X</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:</span><span class="n">i</span><span class="p">]</span>
-<span class="n">test_X</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">:]</span>
-<span class="n">train_y</span> <span class="o">=</span> <span class="n">y</span><span class="p">[:</span><span class="n">i</span><span class="p">]</span>
-<span class="n">test_y</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">:]</span>
-<span class="n">test_imgs</span> <span class="o">=</span> <span class="n">imgs</span><span class="p">[</span><span class="n">i</span><span class="p">:]</span>
-<span class="n">test_bboxes</span> <span class="o">=</span> <span class="n">bboxes</span><span class="p">[</span><span class="n">i</span><span class="p">:]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Task-1a">Task 1a<a class="anchor-link" href="#Task-1a">&#182;</a></h2><p>Construct a Pytorch model that resembles the Keras one in the original blog post, i.e. have a fully connected, hidden layer with 200 neurons, ReLU nonlinearity and dropout rate of 20%.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="o">...</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden2label</span><span class="p">(</span><span class="n">lstm_out</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">log_probs</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">log_softmax</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">log_probs</span>
 </pre></div>
 
 </div>
@@ -12058,233 +12105,154 @@ ln -s /usr/shared/CMPT/big-data/tmp_py/.torch/models/* ~/.torch/models</code></p
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[79]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Feel free to pick the optimizer that works best for you</span>
-<span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adadelta</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span> <span class="c1"># can set lr</span>
-<span class="n">loss_fn</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">(</span><span class="n">size_average</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">torch</span> <span class="k">import</span> <span class="n">optim</span>
+<span class="kn">import</span> <span class="nn">time</span><span class="o">,</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="k">import</span> <span class="n">tqdm_notebook</span> <span class="k">as</span> <span class="n">tqdm</span>
+<span class="n">tqdm</span><span class="o">.</span><span class="n">write</span> <span class="o">=</span> <span class="nb">print</span>
+<span class="kn">from</span> <span class="nn">torchtext</span> <span class="k">import</span> <span class="n">data</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">argparse</span>
 
-</div>
-</div>
-</div>
+<span class="n">torch</span><span class="o">.</span><span class="n">set_num_threads</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">inputs</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">train_X</span><span class="p">))</span>
-<span class="n">labels</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">train_y</span><span class="p">))</span>
-</pre></div>
 
-</div>
-</div>
-</div>
+<span class="k">def</span> <span class="nf">load_bin_vec</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">vocab</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Loads 300x1 word vecs from Google (Mikolov) word2vec</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">word_vecs</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">header</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+        <span class="n">vocab_size</span><span class="p">,</span> <span class="n">layer1_size</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">header</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+        <span class="n">binary_len</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="s1">&#39;float32&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">itemsize</span> <span class="o">*</span> <span class="n">layer1_size</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">vocab_size</span><span class="p">):</span>
+            <span class="n">word</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="n">ch</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;latin-1&#39;</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">ch</span> <span class="o">==</span> <span class="s1">&#39; &#39;</span><span class="p">:</span>
+                    <span class="n">word</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+                    <span class="k">break</span>
+                <span class="k">if</span> <span class="n">ch</span> <span class="o">!=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">:</span>
+                    <span class="n">word</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">vocab</span><span class="p">:</span>
+               <span class="n">word_vecs</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">frombuffer</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">binary_len</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float32&#39;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">binary_len</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">word_vecs</span>
 
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">phase</span> <span class="o">=</span> <span class="s1">&#39;train&#39;</span>
-<span class="n">running_loss</span> <span class="o">=</span> <span class="mf">0.0</span>
-<span class="n">running_corrects</span> <span class="o">=</span> <span class="mi">0</span>
 
-<span class="n">loss_record</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">30</span><span class="p">):</span>
-    <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">get_accuracy</span><span class="p">(</span><span class="n">truth</span><span class="p">,</span> <span class="n">pred</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">truth</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">pred</span><span class="p">)</span>
+    <span class="n">right</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">truth</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">truth</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="o">==</span> <span class="n">pred</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+            <span class="n">right</span> <span class="o">+=</span> <span class="mf">1.0</span>
+    <span class="k">return</span> <span class="n">right</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">truth</span><span class="p">)</span>
 
-    <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
 
-    <span class="n">loss</span> <span class="o">=</span> <span class="n">loss_fn</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="n">phase</span> <span class="o">==</span> <span class="s1">&#39;train&#39;</span><span class="p">:</span>
+<span class="k">def</span> <span class="nf">train_epoch_progress</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">train_iter</span><span class="p">,</span> <span class="n">loss_function</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">text_field</span><span class="p">,</span> <span class="n">label_field</span><span class="p">,</span> <span class="n">epoch</span><span class="p">):</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+    <span class="n">avg_loss</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">truth_res</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">pred_res</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">train_iter</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s1">&#39;Train epoch &#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="p">)):</span>
+        <span class="n">sent</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="n">batch</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">batch</span><span class="o">.</span><span class="n">label</span>
+        <span class="n">label</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">sub_</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">truth_res</span> <span class="o">+=</span> <span class="nb">list</span><span class="p">(</span><span class="n">label</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">batch_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">label</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">hidden</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">init_hidden</span><span class="p">()</span>
+        <span class="n">pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">sent</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">USE_GPU</span><span class="p">:</span>
+            <span class="n">pred_label</span> <span class="o">=</span> <span class="n">pred</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">pred_label</span> <span class="o">=</span> <span class="n">pred</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+        <span class="n">pred_res</span> <span class="o">+=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">pred_label</span><span class="p">]</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">loss_function</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
+        <span class="n">avg_loss</span> <span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+        <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
         <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+    <span class="n">avg_loss</span> <span class="o">/=</span> <span class="nb">len</span><span class="p">(</span><span class="n">train_iter</span><span class="p">)</span>
+    <span class="n">acc</span> <span class="o">=</span> <span class="n">get_accuracy</span><span class="p">(</span><span class="n">truth_res</span><span class="p">,</span> <span class="n">pred_res</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">avg_loss</span><span class="p">,</span> <span class="n">acc</span>
 
-    <span class="n">running_loss</span> <span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">inputs</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">epoch_loss</span> <span class="o">=</span> <span class="n">running_loss</span> <span class="o">/</span> <span class="n">inputs</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">loss_record</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">epoch_loss</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">train_epoch</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">train_iter</span><span class="p">,</span> <span class="n">loss_function</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">):</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+    <span class="n">avg_loss</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">truth_res</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">pred_res</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="n">train_iter</span><span class="p">:</span>
+        <span class="n">sent</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="n">batch</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">batch</span><span class="o">.</span><span class="n">label</span>
+        <span class="n">label</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">sub_</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">truth_res</span> <span class="o">+=</span> <span class="nb">list</span><span class="p">(</span><span class="n">label</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">batch_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">label</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">hidden</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">init_hidden</span><span class="p">()</span>
+        <span class="n">pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">sent</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">USE_GPU</span><span class="p">:</span>
+            <span class="n">pred_label</span> <span class="o">=</span> <span class="n">pred</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">pred_label</span> <span class="o">=</span> <span class="n">pred</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+        <span class="n">pred_res</span> <span class="o">+=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">pred_label</span><span class="p">]</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">loss_function</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
+        <span class="n">avg_loss</span> <span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+        <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+    <span class="n">avg_loss</span> <span class="o">/=</span> <span class="nb">len</span><span class="p">(</span><span class="n">train_iter</span><span class="p">)</span>
+    <span class="n">acc</span> <span class="o">=</span> <span class="n">get_accuracy</span><span class="p">(</span><span class="n">truth_res</span><span class="p">,</span> <span class="n">pred_res</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">avg_loss</span><span class="p">,</span> <span class="n">acc</span>
+
+
+<span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">loss_function</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+    <span class="n">avg_loss</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">truth_res</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">pred_res</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="n">sent</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="n">batch</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">batch</span><span class="o">.</span><span class="n">label</span>
+        <span class="n">label</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">sub_</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">truth_res</span> <span class="o">+=</span> <span class="nb">list</span><span class="p">(</span><span class="n">label</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">batch_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">label</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">hidden</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">init_hidden</span><span class="p">()</span>
+        <span class="n">pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">sent</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">USE_GPU</span><span class="p">:</span>
+            <span class="n">pred_label</span> <span class="o">=</span> <span class="n">pred</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">pred_label</span> <span class="o">=</span> <span class="n">pred</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+        <span class="n">pred_res</span> <span class="o">+=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">pred_label</span><span class="p">]</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">loss_function</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
+        <span class="n">avg_loss</span> <span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+    <span class="n">avg_loss</span> <span class="o">/=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">acc</span> <span class="o">=</span> <span class="n">get_accuracy</span><span class="p">(</span><span class="n">truth_res</span><span class="p">,</span> <span class="n">pred_res</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;: loss </span><span class="si">%.2f</span><span class="s1"> acc </span><span class="si">%.1f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">avg_loss</span><span class="p">,</span> <span class="n">acc</span><span class="o">*</span><span class="mi">100</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">avg_loss</span><span class="p">,</span> <span class="n">acc</span>
+
+
+<span class="k">def</span> <span class="nf">load_sst</span><span class="p">(</span><span class="n">text_field</span><span class="p">,</span> <span class="n">label_field</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">use_gpu</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="n">train</span><span class="p">,</span> <span class="n">dev</span><span class="p">,</span> <span class="n">test</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">TabularDataset</span><span class="o">.</span><span class="n">splits</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">bdata</span><span class="p">,</span><span class="s1">&#39;sst2&#39;</span><span class="p">),</span> <span class="n">train</span><span class="o">=</span><span class="s1">&#39;train.tsv&#39;</span><span class="p">,</span>
+                                                  <span class="n">validation</span><span class="o">=</span><span class="s1">&#39;dev.tsv&#39;</span><span class="p">,</span> <span class="n">test</span><span class="o">=</span><span class="s1">&#39;test.tsv&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;tsv&#39;</span><span class="p">,</span>
+                                                  <span class="n">fields</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;text&#39;</span><span class="p">,</span> <span class="n">text_field</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;label&#39;</span><span class="p">,</span> <span class="n">label_field</span><span class="p">)])</span>
+    <span class="n">text_field</span><span class="o">.</span><span class="n">build_vocab</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">dev</span><span class="p">,</span> <span class="n">test</span><span class="p">)</span>
+    <span class="n">label_field</span><span class="o">.</span><span class="n">build_vocab</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">dev</span><span class="p">,</span> <span class="n">test</span><span class="p">)</span>
+    <span class="n">train_iter</span><span class="p">,</span> <span class="n">dev_iter</span><span class="p">,</span> <span class="n">test_iter</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">BucketIterator</span><span class="o">.</span><span class="n">splits</span><span class="p">((</span><span class="n">train</span><span class="p">,</span> <span class="n">dev</span><span class="p">,</span> <span class="n">test</span><span class="p">),</span>
+                                                                 <span class="n">batch_sizes</span><span class="o">=</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">dev</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">test</span><span class="p">)),</span>
+                                                                 <span class="n">sort_key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">text</span><span class="p">),</span> <span class="n">repeat</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                                                 <span class="n">device</span><span class="o">=</span><span class="mi">0</span> <span class="k">if</span> <span class="n">use_gpu</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">train_iter</span><span class="p">,</span> <span class="n">dev_iter</span><span class="p">,</span> <span class="n">test_iter</span>
 </pre></div>
 
 </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">loss_record</span><span class="p">)</span>
-<span class="c1"># Tensorboard is a good alternative, for debugging display outside of the notebook</span>
-<span class="c1"># https://github.com/lanpa/tensorboard-pytorch/blob/master/README.md#example</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[8]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[&lt;matplotlib.lines.Line2D at 0x7ff5628251d0&gt;]</pre>
-</div>
-
-</div>
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-
-
-<div class="output_png output_subarea ">
-<img src="data:image/png;base64,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
-"
->
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Predict bounding boxes on the test images.</span>
-<span class="n">pred_y</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">Variable</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">test_X</span><span class="p">)))</span>
-<span class="n">pred_bboxes</span> <span class="o">=</span> <span class="n">pred_y</span><span class="o">.</span><span class="n">data</span> <span class="o">*</span> <span class="n">img_size</span>
-<span class="n">pred_bboxes</span> <span class="o">=</span> <span class="n">pred_bboxes</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">pred_bboxes</span><span class="p">),</span> <span class="n">num_objects</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">pred_bboxes</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[9]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>(10000, 1, 4)</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">IOU</span><span class="p">(</span><span class="n">bbox1</span><span class="p">,</span> <span class="n">bbox2</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;Calculate overlap between two bounding boxes [x, y, w, h] as the area of intersection over the area of unity&#39;&#39;&#39;</span>
-    <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="n">h1</span> <span class="o">=</span> <span class="n">bbox1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">bbox1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">bbox1</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">bbox1</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
-    <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">w2</span><span class="p">,</span> <span class="n">h2</span> <span class="o">=</span> <span class="n">bbox2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">bbox2</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">bbox2</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">bbox2</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
-
-    <span class="n">w_I</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">x1</span> <span class="o">+</span> <span class="n">w1</span><span class="p">,</span> <span class="n">x2</span> <span class="o">+</span> <span class="n">w2</span><span class="p">)</span> <span class="o">-</span> <span class="nb">max</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">)</span>
-    <span class="n">h_I</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">y1</span> <span class="o">+</span> <span class="n">h1</span><span class="p">,</span> <span class="n">y2</span> <span class="o">+</span> <span class="n">h2</span><span class="p">)</span> <span class="o">-</span> <span class="nb">max</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span> <span class="n">y2</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">w_I</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">h_I</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># no overlap</span>
-        <span class="k">return</span> <span class="mf">0.</span>
-    <span class="n">I</span> <span class="o">=</span> <span class="n">w_I</span> <span class="o">*</span> <span class="n">h_I</span>
-    <span class="n">U</span> <span class="o">=</span> <span class="n">w1</span> <span class="o">*</span> <span class="n">h1</span> <span class="o">+</span> <span class="n">w2</span> <span class="o">*</span> <span class="n">h2</span> <span class="o">-</span> <span class="n">I</span>
-    <span class="k">return</span> <span class="n">I</span> <span class="o">/</span> <span class="n">U</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Show a few images and predicted bounding boxes from the test dataset. </span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
-<span class="k">for</span> <span class="n">i_subplot</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">i_subplot</span><span class="p">)</span>
-    <span class="n">i</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">test_imgs</span><span class="p">))</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">test_imgs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greys&#39;</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">img_size</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">img_size</span><span class="p">])</span>
-    <span class="k">for</span> <span class="n">pred_bbox</span><span class="p">,</span> <span class="n">exp_bbox</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">pred_bboxes</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">test_bboxes</span><span class="p">[</span><span class="n">i</span><span class="p">]):</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">patches</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">((</span><span class="n">pred_bbox</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pred_bbox</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">pred_bbox</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">pred_bbox</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">ec</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">))</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;IOU: </span><span class="si">{:.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">IOU</span><span class="p">(</span><span class="n">pred_bbox</span><span class="p">,</span> <span class="n">exp_bbox</span><span class="p">)),</span> <span class="p">(</span><span class="n">pred_bbox</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pred_bbox</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">pred_bbox</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">+</span><span class="mf">0.2</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
-<span class="c1"># Calculate the mean IOU (overlap) between the predicted and expected bounding boxes on the test dataset. </span>
-<span class="n">summed_IOU</span> <span class="o">=</span> <span class="mf">0.</span>
-<span class="k">for</span> <span class="n">pred_bbox</span><span class="p">,</span> <span class="n">test_bbox</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">pred_bboxes</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">test_bboxes</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)):</span>
-    <span class="n">summed_IOU</span> <span class="o">+=</span> <span class="n">IOU</span><span class="p">(</span><span class="n">pred_bbox</span><span class="p">,</span> <span class="n">test_bbox</span><span class="p">)</span>
-<span class="n">mean_IOU</span> <span class="o">=</span> <span class="n">summed_IOU</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">pred_bboxes</span><span class="p">)</span>
-<span class="n">mean_IOU</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[11]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>0.19263853371181422</pre>
-</div>
-
-</div>
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-
-
-<div class="output_png output_subarea ">
-<img src="data:image/png;base64,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
-"
->
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -12293,43 +12261,312 @@ ln -s /usr/shared/CMPT/big-data/tmp_py/.torch/models/* ~/.torch/models</code></p
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Task-1b:">Task 1b:<a class="anchor-link" href="#Task-1b:">&#182;</a></h2><p>Move model training that is currently done on the CPU over to the GPU using CUDA and increase the number of epochs. Improve the training setup until you reach an IOU of above 0.6.
-You can make all your changes directly in the cells above.</p>
+<p><strong>TODO:</strong> After instrumentation with the summary writer (see further below), tune these parameters to improve the performance of the model.</p>
 
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[72]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">EPOCHS</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">USE_GPU</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span>
+<span class="c1">#EMBEDDING_TYPE = &#39;glove&#39;</span>
+<span class="n">EMBEDDING_TYPE</span> <span class="o">=</span> <span class="s1">&#39;word2vec&#39;</span>
+<span class="n">EMBEDDING_DIM</span> <span class="o">=</span> <span class="mi">300</span>
+<span class="n">HIDDEN_DIM</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">USE_BILSTM</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">DROPOUT</span> <span class="o">=</span> <span class="o">.</span><span class="mi">05</span>
+<span class="n">LEARNING_RATE</span> <span class="o">=</span> <span class="mf">1e-3</span>
+<span class="n">BATCH_SIZE</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="n">timestamp</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()))</span>
+<span class="n">best_dev_acc</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+<span class="n">text_field</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">lower</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">label_field</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">sequential</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">train_iter</span><span class="p">,</span> <span class="n">dev_iter</span><span class="p">,</span> <span class="n">test_iter</span> <span class="o">=</span> <span class="n">load_sst</span><span class="p">(</span><span class="n">text_field</span><span class="p">,</span> <span class="n">label_field</span><span class="p">,</span> <span class="n">BATCH_SIZE</span><span class="p">,</span> <span class="n">USE_GPU</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">LSTMSentiment</span><span class="p">(</span><span class="n">embedding_dim</span><span class="o">=</span><span class="n">EMBEDDING_DIM</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="o">=</span><span class="n">HIDDEN_DIM</span><span class="p">,</span>
+                      <span class="n">vocab_size</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">text_field</span><span class="o">.</span><span class="n">vocab</span><span class="p">),</span> <span class="n">label_size</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">label_field</span><span class="o">.</span><span class="n">vocab</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span>\
+                      <span class="n">use_gpu</span><span class="o">=</span><span class="n">USE_GPU</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">BATCH_SIZE</span><span class="p">,</span> <span class="n">dropout</span><span class="o">=</span><span class="n">DROPOUT</span><span class="p">,</span> <span class="n">bidirectional</span><span class="o">=</span><span class="n">USE_BILSTM</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">USE_GPU</span><span class="p">:</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+
+<span class="n">best_model</span> <span class="o">=</span> <span class="n">model</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">LEARNING_RATE</span><span class="p">)</span>
+<span class="n">loss_function</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">NLLLoss</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[73]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">if</span> <span class="s1">&#39;glove&#39;</span> <span class="ow">in</span> <span class="n">EMBEDDING_TYPE</span><span class="p">:</span>
+    <span class="c1">#text_field.vocab.load_vectors(&#39;glove.6B.{}d&#39;.format(EMBEDDING_DIM))</span>
+    <span class="n">text_field</span><span class="o">.</span><span class="n">vocab</span><span class="o">.</span><span class="n">load_vectors</span><span class="p">(</span><span class="s1">&#39;glove.twitter.27B.100d&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">USE_GPU</span><span class="p">:</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">embeddings</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">text_field</span><span class="o">.</span><span class="n">vocab</span><span class="o">.</span><span class="n">vectors</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">embeddings</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">text_field</span><span class="o">.</span><span class="n">vocab</span><span class="o">.</span><span class="n">vectors</span>
+    <span class="c1">#model.embeddings.embed.weight.requires_grad = False</span>
+<span class="k">elif</span> <span class="s1">&#39;word2vec&#39;</span> <span class="ow">in</span> <span class="n">EMBEDDING_TYPE</span><span class="p">:</span>
+    <span class="n">word_to_idx</span> <span class="o">=</span> <span class="n">text_field</span><span class="o">.</span><span class="n">vocab</span><span class="o">.</span><span class="n">stoi</span>
+    <span class="n">pretrained_embeddings</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">text_field</span><span class="o">.</span><span class="n">vocab</span><span class="p">),</span> <span class="mi">300</span><span class="p">))</span>
+    <span class="n">pretrained_embeddings</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">word2vec</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Load word embeddings...&#39;</span><span class="p">)</span>
+        <span class="n">word2vec</span> <span class="o">=</span> <span class="n">load_bin_vec</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">bdata</span><span class="p">,</span><span class="s1">&#39;GoogleNews-vectors-negative300.bin&#39;</span><span class="p">),</span> <span class="n">word_to_idx</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">word</span><span class="p">,</span> <span class="n">vector</span> <span class="ow">in</span> <span class="n">word2vec</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">pretrained_embeddings</span><span class="p">[</span><span class="n">word_to_idx</span><span class="p">[</span><span class="n">word</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">vector</span>
+    <span class="c1"># text_field.vocab.load_vectors(wv_type=&#39;&#39;, wv_dim=300)</span>
+
+    <span class="n">model</span><span class="o">.</span><span class="n">embeddings</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">copy_</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">pretrained_embeddings</span><span class="p">));</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Unknown embedding type </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">EMBEDDING_TYPE</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Task-2:-Use-a-pretrained-model">Task 2: Use a pretrained model<a class="anchor-link" href="#Task-2:-Use-a-pretrained-model">&#182;</a></h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>As mentioned in class deep learning systems are hardly ever developed from scratch, but usually work by refining existing solutions to similar problems. For the following task, we'll work through the 
-<a href="http://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html">Transfer learning tutorial</a>, which also provides a ready-made jupyter notebook.</p>
+<h3 id="The-actual-task-(B1):-Tensorboard-instrumentation">The actual task (B1): Tensorboard instrumentation<a class="anchor-link" href="#The-actual-task-(B1):-Tensorboard-instrumentation">&#182;</a></h3><p>To get you to work with the some of the basic tools that enable development and tuning of deep learning architectures, we would like you to use Tensorboard.</p>
 <ol>
-<li>Download the notebook and get it to run in your environment. This also involves downloading the bees and ants dataset.</li>
-<li>Perform your own training with the provided setup.</li>
-<li>Change the currently chosen pretrained network (resnet) to a different one. At least try out VGG and one other type.</li>
-<li>Load a picture that you took yourself and classify it with an unmodified pretrained network (e.g. the original VGG network) that can detect one out of 1000 classes.</li>
+<li>read up on how to instrument your code for profiling and visualization in <a href="https://www.tensorflow.org/programmers_guide/summaries_and_tensorboard">tensorboard</a>, e.g. <a href="http://www.erogol.com/use-tensorboard-pytorch/">at this blog</a></li>
+<li>[partly done] use the tensorboard <code>SummaryWriter</code> to keep track of training loss for each epoch, writing to a local <code>runs</code> folder (which is the default)</li>
+<li>launch tensorboard and inspect the log folder, i.e. run <code>tensorboard --logdir runs</code> from the assignment folder</li>
 </ol>
-<h3 id="Hints-for-step-3">Hints for step 3<a class="anchor-link" href="#Hints-for-step-3">&#182;</a></h3><p>Focus on the section <strong>Conv net as fixed feature xtractor</strong> of the transfer learning tutorial.
-First, change the line</p>
+<p>Note that only point 2 requires you to write code, about 4 lines of it.</p>
 
-<pre><code>model_conv = torchvision.models.resnet18(pretrained=True)</code></pre>
-<p>to load VGG19 instead.</p>
-<p>Next, print out the new model_conv and identify the last step of the classification. This is not named the same way as the <code>fc</code> layer for resnet, but performs the same task. Identify the module that contains the last classification step of the VGG model, which identifies one out of 1000 classes. Change that step into identifying 2 classes only (i.e. the ants and bees that you should start with).</p>
-<p>To change the structure of a hypothetical sequential component called <code>module_name</code> and modify its last layer into a DifferentLayer type, you can use this syntax</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">tensorboardX</span> <span class="k">import</span> <span class="n">SummaryWriter</span>
 
-<pre><code>nn.Sequential(*list(model_conv.module_name.children())[:-1] +
-                     [nn.DifferentLayer(...)])</code></pre>
-<p>and replace the old <code>model_conv.module_name</code> with the differently constructed version.</p>
+<span class="n">out_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">curdir</span><span class="p">,</span> <span class="s2">&quot;runs&quot;</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">))</span>
+<span class="n">writer</span> <span class="o">=</span> <span class="n">SummaryWriter</span><span class="p">(</span><span class="n">comment</span><span class="o">=</span><span class="s1">&#39;-</span><span class="si">{}</span><span class="s1">lstm-em</span><span class="si">{}{}</span><span class="s1">-hid</span><span class="si">{}</span><span class="s1">-do</span><span class="si">{}</span><span class="s1">-bs</span><span class="si">{}</span><span class="s1">-lr</span><span class="si">{}</span><span class="s1">&#39;</span>
+                                <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;BI&#39;</span> <span class="k">if</span> <span class="n">USE_BILSTM</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                                        <span class="n">EMBEDDING_TYPE</span><span class="p">,</span> <span class="n">EMBEDDING_DIM</span><span class="p">,</span>
+                                        <span class="n">HIDDEN_DIM</span><span class="p">,</span>
+                                        <span class="n">DROPOUT</span><span class="p">,</span> <span class="n">BATCH_SIZE</span><span class="p">,</span> <span class="n">LEARNING_RATE</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Writing to </span><span class="si">{}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">out_dir</span><span class="p">))</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">out_dir</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">out_dir</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Training...&#39;</span><span class="p">)</span>
+<span class="n">trial</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># increment this if you manually decide to add more epochs to the current training</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">EPOCHS</span><span class="o">*</span><span class="n">trial</span><span class="p">,</span><span class="n">EPOCHS</span><span class="o">*</span><span class="p">(</span><span class="n">trial</span><span class="o">+</span><span class="mi">1</span><span class="p">)):</span>
+    <span class="n">avg_loss</span><span class="p">,</span> <span class="n">acc</span> <span class="o">=</span> <span class="n">train_epoch_progress</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">train_iter</span><span class="p">,</span> <span class="n">loss_function</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">text_field</span><span class="p">,</span> <span class="n">label_field</span><span class="p">,</span> <span class="n">epoch</span><span class="p">)</span>
+    <span class="n">tqdm</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Train: loss </span><span class="si">%.2f</span><span class="s1"> acc </span><span class="si">%.1f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">avg_loss</span><span class="p">,</span> <span class="n">acc</span><span class="o">*</span><span class="mi">100</span><span class="p">))</span>
+    <span class="c1"># TODO: add scalars for training loss and training accuracy to the summary writer</span>
+    <span class="c1"># call the scalars &#39;Train/Loss&#39; and &#39;Train/Acc&#39;, respectively, and associate them with the current epoch</span>
+    <span class="c1">#...</span>
+
+    <span class="n">dev_loss</span><span class="p">,</span> <span class="n">dev_acc</span> <span class="o">=</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">dev_iter</span><span class="p">,</span> <span class="n">loss_function</span><span class="p">,</span> <span class="s1">&#39;Dev&#39;</span><span class="p">)</span>
+    <span class="c1"># TODO: add scalars for test loss and training accuracy to the summary writer</span>
+    <span class="c1"># call the scalars &#39;Val/Loss&#39; and &#39;Val/Acc&#39;, respectively, and associate them with the current epoch</span>
+    <span class="c1">#...</span>
+    
+    <span class="k">if</span> <span class="n">dev_acc</span> <span class="o">&gt;</span> <span class="n">best_dev_acc</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">best_dev_acc</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s1">&#39;rm &#39;</span><span class="o">+</span> <span class="n">out_dir</span> <span class="o">+</span> <span class="s1">&#39;/best_model&#39;</span> <span class="o">+</span> <span class="s1">&#39;.pth&#39;</span><span class="p">)</span>
+        <span class="n">best_dev_acc</span> <span class="o">=</span> <span class="n">dev_acc</span>
+        <span class="n">best_model</span> <span class="o">=</span> <span class="n">model</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">best_model</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span> <span class="n">out_dir</span> <span class="o">+</span> <span class="s1">&#39;/best_model&#39;</span> <span class="o">+</span> <span class="s1">&#39;.pth&#39;</span><span class="p">)</span>
+        <span class="c1"># evaluate on test with the best dev performance model</span>
+        <span class="n">test_acc</span> <span class="o">=</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">best_model</span><span class="p">,</span> <span class="n">test_iter</span><span class="p">,</span> <span class="n">loss_function</span><span class="p">,</span> <span class="s1">&#39;Test&#39;</span><span class="p">)</span>
+
+<span class="n">test_loss</span><span class="p">,</span> <span class="n">test_acc</span> <span class="o">=</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">best_model</span><span class="p">,</span> <span class="n">test_iter</span><span class="p">,</span> <span class="n">loss_function</span><span class="p">,</span> <span class="s1">&#39;Final Test&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">writer</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Task-B2:-Tune-the-model">Task B2: Tune the model<a class="anchor-link" href="#Task-B2:-Tune-the-model">&#182;</a></h3><p>After connecting the output of your model training and testing performance for monitoring in tensorboard. Change the model and training parameters above to improve the model performance. We would like to see variable plots of how validation accuracy evolves over a number of epochs for different parameter choices, you can stop exploring when you exceed a model accuracy of 76%.</p>
+<p><strong>Show a tensorboard screenshot with performance plots that combine at leat 5 different tuning attempts.</strong> Store the screenshot as <code>tensorboard.png</code>. Then keep the best performing parameters set in this notebook for submission and evaluate the comparison with Vader below using your best model.</p>
+<p>Note, parameter and architecture tuning is an exercise that can go on for a long time. After you have tensorboard running, enabling you to observe learning progress for the algorithms in this notebook, <strong>spend about half an hour tuning to improve the parameter choices</strong>. Big leaps in performance actually require deeper research and may take days or months. While beyond the scope of this assignment, you now have the tools and background knowledge to do such work, if you want to.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Comparison-against-Vader">Comparison against Vader<a class="anchor-link" href="#Comparison-against-Vader">&#182;</a></h2><p>Vader is a rule-based sentiment analysis algorithm that performs quite well against more complex architectures. The test below is to see, whether LSTMs are able to beat its performance.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[76]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">nltk</span>
+<span class="c1">#nltk.download(&#39;vader_lexicon&#39;)</span>
+<span class="kn">from</span> <span class="nn">nltk.sentiment.vader</span> <span class="k">import</span> <span class="n">SentimentIntensityAnalyzer</span>
+<span class="n">sid</span> <span class="o">=</span> <span class="n">SentimentIntensityAnalyzer</span><span class="p">()</span>
+
+<span class="n">da</span> <span class="o">=</span> <span class="n">test_iter</span><span class="o">.</span><span class="n">data</span><span class="p">()</span>
+<span class="n">dat</span> <span class="o">=</span> <span class="p">[(</span><span class="n">d</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">label</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">text</span><span class="p">))</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">da</span><span class="p">]</span>
+<span class="n">lab_vpred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">dat</span><span class="p">),</span> <span class="mi">2</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">sentence</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">dat</span><span class="p">):</span>
+    <span class="n">ss</span> <span class="o">=</span> <span class="n">sid</span><span class="o">.</span><span class="n">polarity_scores</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span>
+    <span class="n">lab_vpred</span><span class="p">[</span><span class="n">k</span><span class="p">,:]</span> <span class="o">=</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">ss</span><span class="p">[</span><span class="s1">&#39;compound&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">label</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;vader acc: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="nb">abs</span><span class="p">(</span><span class="n">lab_vpred</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">lab_vpred</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>vader acc: 0.6880834706205381
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[77]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#test_iter.init_epoch</span>
+<span class="n">batch</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">test_iter</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">batch</span><span class="o">.</span><span class="n">text</span>
+<span class="n">best_model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+<span class="n">pred</span> <span class="o">=</span> <span class="n">best_model</span><span class="p">(</span><span class="n">batch</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/usr/shared/CMPT/big-data/tmp_py/dlenv/lib/python3.6/site-packages/torchtext/data/field.py:322: UserWarning: volatile was removed and now has no effect. Use `with torch.no_grad():` instead.
+  return Variable(arr, volatile=not train)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[78]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">labels</span> <span class="o">=</span> <span class="n">batch</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">labelsnp</span> <span class="o">=</span> <span class="n">labels</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+<span class="n">prednp</span> <span class="o">=</span> <span class="n">pred</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+<span class="n">lstm_acc</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="nb">abs</span><span class="p">(</span><span class="n">prednp</span><span class="o">-</span><span class="n">labelsnp</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;(Bi-)LSTM acc: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">lstm_acc</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>(Bi-)LSTM acc: 0.5551894563426689
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Perform the model tuning and training in the previous task until you outperform the Vader algorithm by at least 5% in accuracy.</strong> Note, this is not a separate task, but just additional code to check whether your tuning efforts have succeeded.</p>
 
 </div>
 </div>
@@ -12346,10 +12583,18 @@ First, change the line</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>For task 1 add your changes to the cells in this notebook.</p>
-<p>For task 2 append the required fields of the transfer learning tutorial to this notebook and make the required modifications.</p>
-<p>Ensure that you have clear section headings that show where you undertake which parts of a question.
-Save <a href="A5-instruction.ipynb">this notebook</a> containing all images and upload your submission as one A5.ipynb file that does not exceed 5 MB. Let us know, if this needs to be increased.</p>
+<p>Save <a href="A9.ipynb">this notebook</a> containing all cell output and upload your submission as one <code>A9.ipynb</code> file.
+Also, include the screenshot of your tensorboard debugging session as <code>tensorboard.png</code>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Some-detail-notes-about-the-dlenv-environment-(not-needed-for-this-assignment,-but-maybe-for-your-project)">Some detail notes about the dlenv environment (not needed for this assignment, but maybe for your project)<a class="anchor-link" href="#Some-detail-notes-about-the-dlenv-environment-(not-needed-for-this-assignment,-but-maybe-for-your-project)">&#182;</a></h3><p>Tensorflow is available in its GPU version now (v1.7.0-rc1 based on CUDA 9.1) - before, it was installed in this environment to only run on CPU.</p>
+<p>Also, PyTorch v0.4 is compiled from its github repo using CUDA 9.1. This enables a feature that was broken for the past two releases - adding the computational graph of any (non-recurrent) convolutional network model to a tensorboard visualization, e.g. see <code>demo_graph.py</code> and other demos in <a href="https://github.com/lanpa/tensorboard-pytorch">this repo</a>, if you'd like to learn more.</p>
 
 </div>
 </div>
