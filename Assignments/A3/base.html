@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>I Love Big Data</title>
+    <style>
+
+      text {
+        font-size: 3em;
+        stroke: black;
+        stroke-width: 1px;
+      }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.16/d3.min.js"></script>
+  </head>
+  <body>
+
+    <script>
+      var data = ["I", " ", "L", "O", "V", "E", " ", "B", "I", "G", " ", "D", "A", "T", "A"];
+      var posScale = d3.scale.ordinal()
+        .domain(d3.range(data.length))
+        .rangeRoundPoints([20, 500]);
+      var colorScale = d3.scale.category20()
+        .domain(d3.range(data.length));
+
+
+      var svg = d3.select("body").append("svg");
+
+      svg.attr("width", 1000)
+        .attr("height", 200);
+
+      var texts = svg.selectAll("text").data(data)
+
+      texts.enter()
+        .append("text")
+        .text(function (d) { return d; });
+
+      texts.attr("text-anchor", "middle")
+        .attr("y", 100)
+        .attr("x", function (d, i) { return posScale(i); } )
+        .attr("fill", function (d, i) { return colorScale(i); });
+
+    </script>
+
+
+  </body>
+</html>
