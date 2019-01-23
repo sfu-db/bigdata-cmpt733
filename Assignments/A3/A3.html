@@ -12087,6 +12087,23 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Conda-environment-for-the-assignment">Conda environment for the assignment<a class="anchor-link" href="#Conda-environment-for-the-assignment">&#182;</a></h3><p>For the big data lab setup, we have put a few useful python modules, such as <code>basemap</code> or <code>geoviews</code>, into a shared conda environment. This would make is possible to use these libraries on the lab computers. To use the environment call</p>
+
+<pre><code>source activate /usr/shared/CMPT/big-data/condaenv/py36</code></pre>
+<p>or prepare once with</p>
+
+<pre><code>mkdir -p ~/.conda/envs
+ln -s /usr/shared/CMPT/big-data/condaenv/py36 ~/.conda/envs/</code></pre>
+<p>and from thereon simply activate using <code>source activate py36</code> and, for instance, work with <code>pyspark</code> on your local machine.</p>
+<p>Note that while logged in you have large amounts of disk space available in <code>/tmp/&lt;username&gt;</code>, which will disappear after logout. Persisting scratch space (e.g. for VMs or datasets) is also available at <code>/usr/shared/CMPT/VirtualBox/&lt;username&gt;</code>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Submission</strong></p>
 <p>Combine the plots into a PDF document <code>weather_report.pdf</code> along with <strong>brief captions explaining and discussing the figures</strong>.
 Please provide your code as <code>weather_plot.py</code>, which could be based on the <a href="https://coursys.sfu.ca/2018fa-cmpt-732-g1/pages/Assign9_Hint"><code>weather_test.py</code></a> from 732-A9 and also submit the weather model that you are using. Please ensure that all visualization code relevant for marking is in <code>weather_plot.py</code>. A Jupyter notebook <code>weather_report.ipynb</code> that contains the markdown to render and discuss the figures saved by <code>weather_plot.py</code> can also be submitted.</p>
