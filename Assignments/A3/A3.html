@@ -12048,7 +12048,7 @@ div#notebook {
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Revisit <a href="https://coursys.sfu.ca/2018fa-cmpt-732-g1/pages/Assign9#h-predicting-the-weather-how-hard-can-it">Assignment 9 from CMPT 732 - Weather prediction</a> and show a deeper analysis of the same temperature data utilizing a simplified version of the model you already have.</p>
 <p><strong>Data</strong></p>
-<p>The weather data on HDFS <code>/courses/732/tmax-{1,2,3}</code> spans a period from 2000 - 2016 and covers many stations around the globe. There are many possible questions to study. Use a python plotting library of your choice, such as matplotlib.</p>
+<p>The weather data on HDFS <code>/courses/732/tmax-{1,2,3,4}</code> spans a large time period and covers many stations around the globe. There are many possible questions to study. Use a python plotting library of your choice, such as matplotlib.</p>
 <p><strong>Model</strong></p>
 <p>The model from A9 of CMPT 732 was using <code>'latitude', 'longitude', 'elevation', 'yesterday_tmax', 'day_of_year'</code> as input features to predict <code>t_max</code>. Please retrain your model to only use <code>'latitude', 'longitude', 'elevation', 'day_of_year'</code> before proceeding with task (b) below, and include this re-trained <code>weather-model</code> in your submission.</p>
 
@@ -12060,7 +12060,7 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Task</strong></p>
-<p><strong>a)</strong> Produce <strong>one or two figures</strong> that illustrate the <strong>max. temperature distribution over the entire globe</strong> and enable a comparison of <strong>different, non-overlapping time periods</strong>. Only show temperatures where you have data available. Take special care to handle (avoid?) overplotting of multiple different values into the same point on the figure.</p>
+<p><strong>a)</strong> Produce <strong>one or more figures</strong> that illustrate the <strong>max. temperature distribution over the entire globe</strong> and enable a comparison of <strong>different, non-overlapping time periods</strong>, e.g. to reveal temporal trends or patterns. Only show temperatures where you have data available. Take care to handle overplotting of multiple different values into the same point on the figure, which might happen when you have multiple measurements for the same station in a chosen period. By <em>handle</em> overplotting we mean, for instance, to aggregate your data to have a clear meaning for the value that is diplayed for a particular station, such as max. or average within the period.</p>
 <p>Here is an example from the web:
 <img src="http://c3headlines.typepad.com/.a/6a010536b58035970c013486e5c5e6970c-pi"/></p>
 <p><strong>b)</strong> Produce two or more figures that show the result of your re-trained regression model from CMPT 732-A9, i.e. a version of the model that does not use <code>yesterday_tmax</code> as extra input feature:</p>
