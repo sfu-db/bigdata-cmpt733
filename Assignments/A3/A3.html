@@ -11789,7 +11789,7 @@ div#notebook {
 <li><a href="#Where-To-Go-From-Here-%28Optional%29">Where To Go From Here (Optional)</a></li>
 </ul>
 </li>
-<li><a href="#Part-2:-Data-analysis-with-Matplotlib">Part 2: Data Analysis</a></li>
+<li><a href="#Part-2:-Data-and-Model-Visualization">Part 2: Data Analysis</a></li>
 <li><a href="#Submission">Submission</a></li>
 </ul>
 </li>
@@ -11861,6 +11861,7 @@ div#notebook {
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Data visualization (a.k.a dataviz) is an important skill for data scientists. It can not only help the data scientists to tell a more vivid <a href="https://www.youtube.com/watch?feature=player_embedded&amp;v=jbkSRLYSojo">story</a> about their findings, but also reveal <a href="https://medium.com/@hrvoje.smolic/the-power-of-data-visualization-anscombes-story-3cfa3d43c59">interesting patterns</a> that cannot be found through typical summary statistics.</p>
 <p>There are a large number of <a href="http://www.computerworld.com/article/2506820/business-intelligence/business-intelligence-chart-and-image-gallery-30-free-tools-for-data-visualization-and-analysis.html?nsdr=true">dataviz tools</a> available. In this assignment, we are going to learn Data-driven Documents (D3), one of the most popular ones. D3 is a JavaScript library for manipulating documents based on data. People may choose to use D3 for various reasons. What I like most about D3 is that it makes the creation of <strong>dynamic</strong> data visualizations on the Web become much easier. In Part 2, you will learn three methods: <strong>"transition", "selection.exit", and "selection.on"</strong> for turning a static visualization into a dynamic one.</p>
+<p>If this is your first time using Javascript, consider to check out one of the many tutorial videos on the web, or skim through the <a href="https://www.w3schools.com/js/">w3schools tutorial</a>.</p>
 
 </div>
 </div>
@@ -11928,7 +11929,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We created a static visualization (<a href="base.html">base.html</a>) using D3. Please download it and read the source code. There shouldn't be a problem to understand the code if you have watched the video.</p>
+<p>We created a static visualization (<a href="base.html">base.html</a>) using D3. Please download it and read the source code. There shouldn't be a problem to understand the code if you have watched the video. If you want to use the most recent version 4 of D3, we have an alternative (<a href="base_v4.html">base_v4.html</a>) that you can start from.</p>
 <p>"base.html" will be your starting point. The goal of the following tasks is to make "base.html" become dynamic using three different methods. While these tasks look a little useless from a data analysis point of view, you can easily extend them to more realistic charts (e.g., replacing each character with a bar).</p>
 
 </div>
@@ -12037,7 +12038,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Part-2:-Data-analysis-with-Matplotlib">Part 2: Data analysis with Matplotlib<a class="anchor-link" href="#Part-2:-Data-analysis-with-Matplotlib">&#182;</a></h2>
+<h2 id="Part-2:-Data-and-Model-Visualization">Part 2: Data and Model Visualization<a class="anchor-link" href="#Part-2:-Data-and-Model-Visualization">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -12045,9 +12046,11 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Revisit <a href="https://coursys.sfu.ca/2018fa-cmpt-732-g1/pages/Assign9#h-predicting-the-weather-how-hard-can-it">Assignment 9 from CMPT 732 - Weather prediction</a> and show a deeper analysis of the same temperature data utilizing the model you already have.</p>
+<p>Revisit <a href="https://coursys.sfu.ca/2018fa-cmpt-732-g1/pages/Assign9#h-predicting-the-weather-how-hard-can-it">Assignment 9 from CMPT 732 - Weather prediction</a> and show a deeper analysis of the same temperature data utilizing a simplified version of the model you already have.</p>
 <p><strong>Data</strong></p>
-<p>The weather data on HDFS <code>/courses/732/tmax-{1,2,3}</code> spans a period from 2000 - 2016 and covers many stations around the globe. There are many possible questions to study. Use a python plotting library of your choice, such as matplotlib.</p>
+<p>The weather data on HDFS <code>/courses/732/tmax-{1,2,3,4}</code> spans a large time period and covers many stations around the globe. There are many possible questions to study. Use a python plotting library of your choice, such as matplotlib.</p>
+<p><strong>Model</strong></p>
+<p>The model from A9 of CMPT 732 was using <code>'latitude', 'longitude', 'elevation', 'yesterday_tmax', 'day_of_year'</code> as input features to predict <code>t_max</code>. Please retrain your model to only use <code>'latitude', 'longitude', 'elevation', 'day_of_year'</code> before proceeding with task (b) below, and include this re-trained <code>weather-model</code> in your submission.</p>
 
 </div>
 </div>
@@ -12057,12 +12060,13 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Task</strong></p>
-<p><strong>a)</strong> Produce <strong>one or two figures</strong> that illustrate the <strong>max. temperature distribution over the entire globe</strong> and enable a comparison of <strong>different, non-overlapping time periods</strong>. Only show temperatures where you have data available. Take special care to handle (avoid?) overplotting of multiple different values into the same point on the figure.</p>
+<p><strong>a)</strong> Produce <strong>one or more figures</strong> that illustrate the <strong>max. temperature distribution over the entire globe</strong> and enable a comparison of <strong>different, non-overlapping time periods</strong>, e.g. to reveal temporal trends or patterns. Only show temperatures where you have data available. Take care to handle overplotting of multiple different values into the same point on the figure, which might happen when you have multiple measurements for the same station in a chosen period. By <em>handle</em> overplotting we mean, for instance, to aggregate your data to have a clear meaning for the value that is diplayed for a particular station, such as max. or average within the period.</p>
 <p>Here is an example from the web:
 <img src="http://c3headlines.typepad.com/.a/6a010536b58035970c013486e5c5e6970c-pi"/></p>
-<p><strong>b)</strong> Produce two or more figures that show the result of your trained regression model from CMPT 732-A9:</p>
+<p><strong>b)</strong> Produce two or more figures that show the result of your re-trained regression model from CMPT 732-A9, i.e. a version of the model that does not use <code>yesterday_tmax</code> as extra input feature:</p>
 <p><strong>(b1)</strong> Evaluate your model at a grid of latitude, longitude positions around the globe spanning across oceans and continents, leading to a dense plot of temperatures. This could, for instance, look something like the following.
-<img src="http://www.physicalgeography.net/fundamentals/images/jan_temp.gif"/></p>
+<img src="http://www.physicalgeography.net/fundamentals/images/jan_temp.gif"/>
+You can use a fixed <code>day_of_year</code> of your choice. Also, see further hints about <code>elevation</code> below.</p>
 <p><strong>(b2)</strong> In a separate plot show the regression error of your model predictions against test data. In this case only use locations where data is given, i.e. you may reuse your plotting method from Part 2 (a).</p>
 
 </div>
@@ -12074,10 +12078,27 @@ div#notebook {
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Comments and Hints</strong></p>
 <p>Any imperfections of your trained model that show up in the visualization are fine. In fact, in this example it is a sign of a good visualization, if it enables us to understand shortcomings of the model. You are not marked for the performance of your model from 732-A9 again, but rather for the methods you create here to investigate it.</p>
-<p>Do not worry about overlaying continent or country borders on your map, but make sure you use enough points such that the shape of some continents roughly emerges from the data distribution. You may train and visualize on any data subset with at least 100k rows.</p>
+<p>Do not worry about overlaying continent or country borders on your map, but make sure you use enough points such that the shape of some continents roughly emerges from the data distribution. You may visualize using any data subset with at least 100k rows.</p>
 <p>For (b1) you will need elevation information for the points you produce. Have a look at <a href="elevation_grid.py"><code>elevation_grid.py</code></a> for a possible way to add this info to your choice of coordinates. If you place the accompanying <a href="elevations_latlon.npy.gz">elevation data</a> in the same folder as the script you can import the module and see <code>help(evaluation_grid)</code> for example usage.
 <img src="img/elevations.png"/>
 <code>elevation_grid.py</code> internally stores elevation data as an array at 5 times the resolution of the figure shown here, use the <code>get_elevations</code> function to access it.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Conda-environment-for-the-assignment">Conda environment for the assignment<a class="anchor-link" href="#Conda-environment-for-the-assignment">&#182;</a></h3><p>For the big data lab setup, we have put a few useful python modules, such as <code>basemap</code> or <code>geoviews</code>, into a shared conda environment. To use the environment call</p>
+
+<pre><code>source activate /usr/shared/CMPT/big-data/condaenv/py36</code></pre>
+<p>or prepare once with</p>
+
+<pre><code>mkdir -p ~/.conda/envs
+ln -s /usr/shared/CMPT/big-data/condaenv/py36 ~/.conda/envs/</code></pre>
+<p>and from thereon simply activate using <code>source activate py36</code> and, for instance, work with <code>pyspark</code> on your local machine.</p>
+<p>Note that while logged in you have large amounts of disk space available in <code>/tmp/&lt;username&gt;</code>, which will disappear after logout. Persisting scratch space (e.g. for VMs or datasets) is also available at <code>/usr/shared/CMPT/VirtualBox/&lt;username&gt;</code>.</p>
 
 </div>
 </div>

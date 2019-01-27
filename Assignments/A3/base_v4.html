@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>I Love Big Data</title>
+    <style>
+
+      text {
+        font-size: 3em;
+        stroke: black;
+        stroke-width: 1px;
+      }
+    </style>
+    <!-- <script src="https://d3js.org/d3.v3.min.js"></script> -->
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+<!--     <script src="https://d3js.org/d3.v5.min.js"></script>
+ -->
+
+  </head>
+  <body>
+
+    <script>
+      var data = ["I", " ", "L", "O", "V", "E", " ", "B", "I", "G", " ", "D", "A", "T", "A"];
+      var posScale = d3.scaleLinear()
+        .domain([0, 14])
+        .range([20, 500]);
+
+      var colorScale = d3.scaleOrdinal(d3.schemeCategory10).domain([0, 14]);
+        
+      var svg = d3.select("body").append("svg");
+
+      svg.attr("width", 1000)
+        .attr("height", 200);
+
+      var texts = svg.selectAll("text").data(data)
+      console.log("Hello Debugger" , texts)
+       
+      texts.enter()
+        .append("text")
+        .text(function (d) { return d; })
+        .attr("text-anchor", "middle")
+        .attr("y", 100)
+        .attr("x", function (d, i) { return posScale(i); } )
+        .attr("fill", function (d, i) { return colorScale(i); });
+
+    </script>
+
+
+  </body>
+</html>
