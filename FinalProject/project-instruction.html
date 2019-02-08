@@ -11,8 +11,8 @@
 *
 */
 /*!
- * Bootstrap v3.3.6 (http://getbootstrap.com)
- * Copyright 2011-2015 Twitter, Inc.
+ * Bootstrap v3.3.7 (http://getbootstrap.com)
+ * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
@@ -1107,7 +1107,6 @@ a:focus {
   text-decoration: underline;
 }
 a:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -2536,7 +2535,6 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -3027,7 +3025,6 @@ select[multiple].input-lg {
 .btn.focus,
 .btn:active.focus,
 .btn.active.focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -8758,6 +8755,9 @@ body > #header .header-bar {
     margin-left: 10px;
   }
 }
+[dir="rtl"] #ipython_notebook {
+  float: right !important;
+}
 #noscript {
   width: auto;
   padding-top: 16px;
@@ -8960,8 +8960,14 @@ span#login_widget > .button .badge,
  *
  * Author: Jupyter Development Team
  */
+[dir="rtl"] #tabs li {
+  float: right;
+}
 ul#tabs {
   margin-bottom: 4px;
+}
+[dir="rtl"] ul#tabs {
+  margin-right: 0px;
 }
 ul#tabs a {
   padding-top: 6px;
@@ -8984,6 +8990,16 @@ ul.breadcrumb span {
 }
 .list_toolbar .tree-buttons {
   padding-top: 1px;
+}
+[dir="rtl"] .list_toolbar .tree-buttons {
+  float: left !important;
+}
+[dir="rtl"] .list_toolbar .pull-right {
+  padding-top: 1px;
+  float: left !important;
+}
+[dir="rtl"] .list_toolbar .pull-left {
+  float: right !important;
 }
 .dynamic-buttons {
   padding-top: 3px;
@@ -9120,6 +9136,9 @@ ul.breadcrumb span {
 #tree-selector {
   padding-right: 0px;
 }
+[dir="rtl"] #tree-selector a {
+  float: right;
+}
 #button-select-all {
   min-width: 50px;
 }
@@ -9209,6 +9228,9 @@ ul#new-menu {
   left: auto;
   right: 0;
 }
+[dir="rtl"] #new-menu {
+  text-align: right;
+}
 .kernel-menu-icon {
   padding-right: 12px;
   width: 24px;
@@ -9253,6 +9275,9 @@ ul#new-menu {
 }
 #running .panel-group .panel .panel-body .list_container .list_item:last-child {
   border-bottom: 0px;
+}
+[dir="rtl"] #running .col-sm-8 {
+  float: right !important;
 }
 .delete-button {
   display: none;
@@ -9549,6 +9574,7 @@ div.cell.selected.jupyter-soft-selected {
   }
 }
 div.inner_cell {
+  min-width: 0;
   /* Old browsers */
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -9569,11 +9595,6 @@ div.inner_cell {
   box-flex: 1;
   /* Modern browsers */
   flex: 1;
-}
-@-moz-document url-prefix() {
-  div.inner_cell {
-    overflow-x: hidden;
-  }
 }
 /* input_area and input_prompt must match in top border and margin for alignment */
 div.input_area {
@@ -11244,7 +11265,7 @@ div#pager .ui-resizable-handle::after {
 }
 .shortcut_key {
   display: inline-block;
-  width: 20ex;
+  width: 21ex;
   text-align: right;
   font-family: monospace;
 }
@@ -11556,6 +11577,7 @@ ul.typeahead-list > li > a {
   box-shadow: 0px 0px 12px 1px rgba(87, 87, 87, 0.2);
 }
 .terminal-app .terminal {
+  width: 100%;
   float: left;
   font-family: monospace;
   color: white;
@@ -11569,6 +11591,9 @@ ul.typeahead-list > li > a {
 .terminal-app .terminal dummy-screen {
   line-height: 1em;
   font-size: 14px;
+}
+.terminal-app .terminal .xterm-rows {
+  padding: 10px;
 }
 .terminal-app .terminal-cursor {
   color: black;
@@ -11629,8 +11654,10 @@ ul.typeahead-list > li > a {
 .highlight .mh { color: #666666 } /* Literal.Number.Hex */
 .highlight .mi { color: #666666 } /* Literal.Number.Integer */
 .highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
 .highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
 .highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
 .highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
 .highlight .s2 { color: #BA2121 } /* Literal.String.Double */
 .highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
@@ -11641,9 +11668,11 @@ ul.typeahead-list > li > a {
 .highlight .s1 { color: #BA2121 } /* Literal.String.Single */
 .highlight .ss { color: #19177C } /* Literal.String.Symbol */
 .highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
 .highlight .vc { color: #19177C } /* Name.Variable.Class */
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
     </style>
 <style type="text/css">
@@ -11697,9 +11726,7 @@ body {
 div#notebook {
   overflow: visible;
   border-top: none;
-}
-
-@media print {
+}@media print {
   div.cell {
     display: block;
     page-break-inside: avoid;
@@ -11720,7 +11747,7 @@ div#notebook {
 
 <!-- Loading mathjax macro -->
 <!-- Load mathjax -->
-    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
     <!-- MathJax configuration -->
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -11744,8 +11771,7 @@ div#notebook {
   <div tabindex="-1" id="notebook" class="border-box-sizing">
     <div class="container" id="notebook-container">
 
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11753,8 +11779,7 @@ div#notebook {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11762,14 +11787,13 @@ div#notebook {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>In the final project, we hope everyone can think yourself as a real-world data scientist. Your goal is to come up with some interesting questions, find right datasets, and implement a data-science pipeline to answer those questions. In order to achieve this, please follow the following steps:</p>
 <ol>
-<li>Form a data-science team of <strong>2-3</strong> persons. Note that single-person group is not allowed since it is important for data scientisits to know how to collaborate with others.</li>
+<li>Form a data-science team of <strong>2-4</strong> persons. Note that single-person group is not allowed since it is important for data scientisits to know how to collaborate with others.</li>
 <li>Pick up a project idea and write a proposal</li>
 <li>Give a 5-min Milestone Presentation</li>
 <li>Present your project in the poster session</li>
@@ -11779,8 +11803,7 @@ div#notebook {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11788,8 +11811,7 @@ div#notebook {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11798,8 +11820,7 @@ div#notebook {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11815,26 +11836,26 @@ div#notebook {
 <tr>
 <td>1</td>
 <td>Proposal</td>
-<td>Monday 02/12 at 11:59 PM</td>
+<td>Monday 02/18 at 11:59 PM</td>
 <td>Submit the filled <a href="https://docs.google.com/document/d/1DV-4Zyd0WJVqdH6IpIz2De0FUq-OsCtSytcz6Zn7Gro/edit?usp=sharing">form</a> to the CourSys activity <a href="https://coursys.sfu.ca/2018sp-cmpt-733-g1/+plan/">Initial Plan</a> </td>
 </tr>
 <tr>
 <td>2</td>
 <td>Milestone Presentation</td>
-<td>Monday 03/05 at 08:00 AM <br/> Monday 03/05 at 09:30 AM</td>
-<td>Submit your slides to the CourSys activity <a href="https://courses.cs.sfu.ca/2018sp-cmpt-733-g1/+slides/">Presentation</a> <br / > Give a talk in TASC 1 9204 West</td>
+<td>Monday 03/04 at 08:00 AM <br/> Monday 03/04 at 09:30 AM</td>
+<td>Submit your slides to the CourSys activity Presentation &lt;br / &gt; Give a talk in TASC 1 9204 West</td>
 </tr>
 <tr>
 <td>3</td>
 <td>Poster Session</td>
-<td>Monday 04/09 at 8:00 AM <br / > Monday 04/09 at 9:30 AM</td>
-<td>Submit your poster to the CourSys activity <a href="https://courses.cs.sfu.ca/2018sp-cmpt-733-g1/+poster/">Poster Session</a> <br />Present your post at the SFU Big Data Hub</td>
+<td>Monday 04/08 at 8:00 AM &lt;br / &gt; Monday 04/08 at 9:30 AM</td>
+<td>Submit your poster to the CourSys activity Poster Session <br />Present your post at the SFU Big Data Hub</td>
 </tr>
 <tr>
 <td>4</td>
 <td>Final Report</td>
-<td>Monday  04/16 at 11:59 PM</td>
-<td>Submit your code, video, and report to the CourSys activity <a href="https://coursys.sfu.ca/2018sp-cmpt-733-g1/+final/">Final Report</a></td>
+<td>Monday  04/14 at 11:59 PM</td>
+<td>Submit your code, video, and report to the CourSys activity Final Report</td>
 </tr>
 </tbody>
 </table>
@@ -11842,8 +11863,7 @@ div#notebook {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11851,43 +11871,43 @@ div#notebook {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Choose-from-what-we-provide">Choose from what we provide<a class="anchor-link" href="#Choose-from-what-we-provide">&#182;</a></h3><p>We provide a list of project ideas collected from various sources (companies, SFU profs, previous cohorts). These projects are super cool! I highly recommend you to read each of them carefully. Even if you end up not choosing any one, you can still get to know what real data-science problems that industry and academia are working on.</p>
 <ol>
-<li><a href="./A-prototype-Canadian-Natural-Hazards-Database.pdf">A prototype Canadian Natural Hazards Database</a></li>
-<li><a href="./Automated-Feature-Detection-of-Aerial-Imagery-from-South-Pacific.pdf">Automated Feature Detection of Aerial Imagery from South Pacific</a></li>
-<li><a href="./Fall-Detection-using-wearable-sensor-data.pdf">Fall Detection using wearable sensor data</a></li>
-<li><a href="./Machine-learning-to-detect-misstated-financial-statements.pdf">Machine learning to detect misstated financial statements</a></li>
-<li><a href="./Predicting-Soccer-games-and-tournaments.pdf">Predicting Soccer games and tournaments</a></li>
-<li><a href="./Predictive-Maintenance-on-IOT-devices.pdf">Predictive Maintenance on IOT devices</a></li>
-<li><a href="./Property-value-prediction-with-market-data.pdf">Property value prediction with market data</a></li>
-<li><a href="./Topic-modeling-and-visualization-of-news-comments.pdf">Topic modeling and visualization of news comments</a></li>
+<li><a href="./Analyzing-Social-media-user-interaction.pdf">Analyzing Social media user interaction (2019)</a></li>
+<li><a href="./LTF-Big-Data-Financial-Analysis.pdf">LTF - Big Data Financial Analysis (2019)</a></li>
+<li><a href="./Measuring-observable-influence-and-impact-of-scientific-research-beyond-academia.pdf">Measuring Observable Influence and Impact of Scientific Research Beyond Academia (2019)</a></li>
+<li><a href="./A-prototype-Canadian-Natural-Hazards-Database.pdf">A prototype Canadian Natural Hazards Database (2018)</a></li>
+<li><a href="./Automated-Feature-Detection-of-Aerial-Imagery-from-South-Pacific.pdf">Automated Feature Detection of Aerial Imagery from South Pacific (2018)</a></li>
+<li><a href="./Fall-Detection-using-wearable-sensor-data.pdf">Fall Detection using wearable sensor data (2018)</a></li>
+<li><a href="./Machine-learning-to-detect-misstated-financial-statements.pdf">Machine learning to detect misstated financial statements (2018)</a></li>
+<li><a href="./Predicting-Soccer-games-and-tournaments.pdf">Predicting Soccer games and tournaments (2018)</a></li>
+<li><a href="./Predictive-Maintenance-on-IOT-devices.pdf">Predictive Maintenance on IOT devices (2018)</a></li>
+<li><a href="./Property-value-prediction-with-market-data.pdf">Property value prediction with market data (2018)</a></li>
+<li><a href="./Topic-modeling-and-visualization-of-news-comments.pdf">Topic modeling and visualization of news comments (2018)</a></li>
 </ol>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>If you decide to choose from the above list, please put your names <a href="https://docs.google.com/spreadsheets/d/1684jahxLiF3jNc1cM89kIxQ48xgDaEwl8OIXkMdSooA/edit?usp=sharing">here</a> and read the followings carefully.</p>
+<p>If you decide to choose from the above list, please put your names <a href="https://docs.google.com/spreadsheets/d/1w34F36K3Szj9ljy0IF9x6VxOVPgv-y7VPSWKxQjkmoo/edit?usp=sharing">here</a> and read the followings carefully.</p>
 <ul>
 <li>Without our permission, each project can be chosen by at most 2 teams. </li>
-<li>You get a mentor! See the contact person in the proposal. They have all agreed to help with your project. Please contact them if you need any help.</li>
+<li>You will get a mentor if you work on <strong>Projects 1-3</strong>! See the contact person in the proposal. They have all agreed to help with your project. Please contact them if you need any help.</li>
 <li>If you think that the project is too big and cannot be completed within two months, please discuss with your mentor to reduce the workload, or collaborate with the other team to split the workload.</li>
 </ul>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11895,8 +11915,7 @@ div#notebook {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11920,8 +11939,7 @@ div#notebook {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11929,8 +11947,7 @@ div#notebook {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11938,13 +11955,12 @@ div#notebook {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>Create your data-science team in <a href="https://coursys.sfu.ca/2018sp-cmpt-733-g1/groups/">CourSys</a></li>
+<li>Create your data-science team in <a href="https://coursys.sfu.ca/2019sp-cmpt-733-g1/groups/">CourSys</a></li>
 <li>Download the Initial Plan <a href="https://docs.google.com/document/d/1DV-4Zyd0WJVqdH6IpIz2De0FUq-OsCtSytcz6Zn7Gro/edit?usp=sharing">form template</a> </li>
 <li>Submit the filled form to the CourSys activity Initial Plan</li>
 </ul>
@@ -11952,8 +11968,7 @@ div#notebook {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11961,8 +11976,7 @@ div#notebook {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11993,8 +12007,7 @@ div#notebook {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12002,8 +12015,7 @@ div#notebook {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12035,8 +12047,7 @@ div#notebook {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12044,8 +12055,7 @@ div#notebook {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12056,13 +12066,12 @@ div#notebook {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong> Report (10 points)</strong></p>
-<p>You will submit a report of at most 5 pages giving an overview of your project.</p>
+<p>You will submit a report giving an overview of your project at <a href="https://medium.com/sfu-big-data">SFU Big Data Publication</a>. The report should have at least 2500 words with the following structure:</p>
 <ul>
 <li><u> Project Title:</u> Come up with an attractive project title (see this <a href="https://blog.hubspot.com/marketing/a-simple-formula-for-writing-kick-ass-titles-ht#sm.0000072w4nzrqmfn2vwd6y30afmyo">page</a> for some tips);</li>
 <li><u>Motivation and Background:</u> Who cares about this project? Any related work?  </li>
@@ -12078,8 +12087,7 @@ div#notebook {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12093,18 +12101,17 @@ div#notebook {
 <li>Need to show the conclusion of your project</li>
 <li>Put your contact information in the end of the video</li>
 </ol>
-<p>You can get some inspirations from <a href="https://www.youtube.com/watch?v=wSMaDSQjCG4&list=PLliTSxmRFGVPkvUZb3Q-DzvOgs20LOinA">KDD 2017 Promotional Videos</a>.</p>
+<p>You can get some inspirations from <a href="https://www.youtube.com/watch?v=wSMaDSQjCG4&amp;list=PLliTSxmRFGVPkvUZb3Q-DzvOgs20LOinA">KDD 2017 Promotional Videos</a> and <a href="https://www.youtube.com/watch?v=7hOxFSxdS3k&amp;list=PLQKvj098sSkomub2IQ78cq8AHU692mIK-">KDD 2018 Promotional Videos</a></p>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Submission</strong></p>
-<p>We will create a web page in the course website and put your projects there. On the page, we will put a project title, a project summary, and the three URLs that links to your codebase, video, and final report, respectvely. Please submit your project title, project summary, final report (PDF), code (URL), and video (Youtube URL) to the CourSys activity <a href="https://coursys.sfu.ca/2018sp-cmpt-733-g1/+final/">Final Report</a>.</p>
+<p>We will create a web page in the course website and put your projects there. On the page, we will put a project title, a project summary, and the three URLs that links to your codebase, video, and final report, respectvely. Please submit your project title, project summary, final report (Medium URL), code (Github/GitLab URL), and video (Youtube URL) to the CourSys activity <a href="https://coursys.sfu.ca/2019sp-cmpt-733-g1/+final/">Final Report</a>.</p>
 
 </div>
 </div>
