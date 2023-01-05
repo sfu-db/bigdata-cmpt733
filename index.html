@@ -1,0 +1,387 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Professional Data Science Course</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+
+      body {
+        padding-top: 20px;
+    }
+    .constainer {
+      margin-top: 20px;
+    }
+
+    .top-buffer { margin-top:40px; }
+
+    a {
+        color: #00BFFF;
+    }
+
+    a:visited {
+        color: #00BFFF;
+    }
+
+    mark {
+        background: #FF9;
+    }
+
+    b {
+        font-weight: 700;
+    }
+
+
+
+    </style>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-112163654-1"></script>
+    <script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'UA-112163654-1');
+    </script>
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></sc\
+      ript>
+    <![endif]-->
+
+
+  </head>
+
+  <body>
+
+
+    <div class="container">
+
+
+<h2 id="cmpt843">CMPT 733: Big Data Programming II (SFU, Spring 2023)</h2>
+
+<h3 id="objectives">Objectives</h3>
+
+<p> From CMPT 726 and CMPT 732, students have learned machine learning algorithms and big data programming tools. However, when facing a real-world data problem, we find that there is still a gap between what is addressed by machine learning or data engineering and what we are going to do in practice.</p>
+<p>The goal of this course is to fill this gap, enabling the students to apply what they have learned to solve real-world problems. To achieve this goal, our course will cover a set of important topics that a data scientist should know, and teach students about state-of-the-art approaches. After taking this course, students should feel confident when being asked to extract value from real-world data sets, and know how to ask interesting questions about data, how to choose proper tools, how to design data-processing pipelines, and how to present final data products. </p>
+
+<h3 id="topics">Topics</h3>
+
+<ul>
+<li>Introduction to Data Science</li>
+<li>Data Preparation</li>
+<li>Visualization</li>
+<li>Statistics</li>
+<li>Deep Learning</li>
+<li>Practical Machine Learning (AutoML, Explainable AI, Feature Engineering)</li>
+<li>Anomaly Detection</li>
+<li>Cloud Computing</li>
+<li>Responsible Data Science</li>
+<li>Communication </li>
+</ul>
+
+<h3 id="logistics">Logistics</h3>
+
+<ul>
+  <li><b>Instructor: </b><a href="https://stevenbergner.github.io">Steven Bergner</a></li>
+  <li><b>TAs: </b><a href="https://coursys.sfu.ca/2023sp-cmpt-733-g1/">Hiren Naresh Bangani, Gonick Nalwa, Aditya Bhadreshkumar Panchal</a></li>
+  <li><b>Lectures: </b>Thu 2:30 PM - 4:20 PM (<a href="https://roomfinder.sfu.ca/apps/sfuroomfinder_web/?q=AQ3153">AQ3153</a>)</li>
+  <li><b>Lab G101: </b>Tue 1:30 PM - 5:20 PM (<a href="https://roomfinder.sfu.ca/apps/sfuroomfinder_web/?q=SECB1010">SECB1010</a>)</li>
+  <li><b>Lab G103: </b>Thu 9:30 PM - 1:20 PM (<a href="https://roomfinder.sfu.ca/apps/sfuroomfinder_web/?q=SECB1010">SECB1010</a>)</li>
+</ul>
+
+<h3 id="grading">Grading</h3>
+
+<ul>
+  <li>Assignments: 11 × 3% = 33%</li>
+  <li>Blog Post: 20% </li>
+  <li>Final Project: 47% (2% proposal + 15% milestone + 15% final presentation + 15% code&report&video)</li>
+</ul>
+
+
+<h3 id="project">Final Project</h3>
+
+<!--
+<ul>
+  <li><a href ="https://nbviewer.jupyter.org/github/sfu-db/bigdata-cmpt733/blob/master/FinalProject/project-instruction.ipynb">Instruction</a></li>
+        <li><a href="./final-project-sp20.html">Final Project Showcase 2020</a> </li>
+        <li><a href="./final-project-sp19.html">Final Project Showcase 2019</a> </li>
+        <li><a href="./final-project-sp18.html">Final Project Showcase 2018</a> </li>
+</ul>
+-->
+
+<h3 id="blogpost">Blog Post</h3>
+<ul>
+<li> <a href ="https://github.com/sfu-db/bigdata-cmpt733/blob/master/Blog/blog-post.ipynb">Instruction </a> </li>
+<li> <a href="https://medium.com/sfu-big-data">Blog Post Showcase 2019-2021</a> </li>
+</ul>
+
+<h3 id="schedule">Schedule</h3>
+
+<table class="table table-bordered">
+  <thead>
+    <tr class="info">
+      <td><b>Week</b></td>
+      <td><b>Date</b></td>
+      <td><b>Event Type</b></td>
+      <td><b>Description</b></td>
+      <td><b>Course Materials</b></td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="2">Week 1</td>
+      <td>Thursday <br/> Jan 5</td>
+      <td> Lecture 1</td>
+      <td> <b>Course Introduction</b> <br/> What/Why Data Science? <br/> Data Science Lifecycle <br/> Questions that data scientists can answer <br/> Course Logistics  </td>
+      <td> <a href="Lectures/lec1.pdf">[slides]</a></td>
+    </tr>
+    <tr>
+      <td>Thursday <br/> Jan 12</td>
+      <td> A1 Due</td>
+      <td> <b>Assignment #1 Due</b>  </td>
+      <td> <a href="https://github.com/sfu-db/bigdata-cmpt733/blob/master/Assignments/A1/A1-1.ipynb">[Assignment #1 (Part 1)]</a><br/><a href="https://github.com/sfu-db/bigdata-cmpt733/blob/master/Assignments/A1/A1-2.ipynb">[Assignment #1 (Part 2)]</a></td>
+    </tr>
+
+    <tr class="active">
+      <td rowspan="2">Week 2</td>
+      <td>Thursday <br/> Jan 12</td>
+      <td> Lecture 2</td>
+      <td> <b>Data Preparation</b> <br/> Data Collection <br/> Data Transformation </br> Data Cleaning <br/> Data Integration   </td>
+      <td> <a href="Lectures/lec2.pdf">[slides]</a></td>
+    </tr>
+    <tr class="active">
+      <td>Thursday <br/> Jan 19</td>
+      <td> A2 Due</td>
+      <td> <b>Assignment #2 Due</b> </td>
+      <td> <a href="https://github.com/sfu-db/bigdata-cmpt733/blob/master/Assignments/A2/A2-1.ipynb">[Assignment #2 (Part 1)]</a> <br/> <a href="https://github.com/sfu-db/bigdata-cmpt733/blob/master/Assignments/A2/A2-2.ipynb">[Assignment #2 (Part 2)]</a></td>
+    </tr>
+
+    <tr>
+      <td rowspan="2">Week 3</td>
+      <td>Thursday <br/> Jan 19</td>
+      <td> Lecture 3</td>
+      <td> <b>Data Visualization (Part I)</b> <br/> Introduction to Visualization <br/> Exploratory Data Analysis <br/> Visualization Principles</td>
+      <td> <a href="Lectures/lec3.pdf">[slides]</a></td>
+    </tr>
+    <tr>
+      <td>Thursday <br/> Jan 26</td>
+      <td> A3 Due</td>
+      <td> <b>Assignment #3 Due</b>  </td>
+      <td> <a href="https://github.com/sfu-db/bigdata-cmpt733/blob/master/Assignments/A3/A3.ipynb">[Assignment #3]</a></td>
+    </tr>
+
+    <tr class="active">
+      <td rowspan="3">Week 4</td>
+      <td>Thursday <br/> Jan 26</td>
+      <td> Lecture 4</td>
+      <td> <b>Statistics (Part I) </b> <br/>Statistical Thinking <br/> EDA<br/> </td>
+      <td> <a href="Lectures/lec4.pdf">[slides]</a></td>
+    </tr>
+     <tr class="active">
+      <td>Thursday <br/> Feb 2</td>
+      <td> A4 Due</td>
+      <td> <b>Assignment #4 Due</b> </td>
+      <td> <a href="https://github.com/sfu-db/bigdata-cmpt733/blob/master/Assignments/A4/A4.ipynb">[Assignment #4]</a></td>
+    </tr>
+    <tr class="active">
+      <td>Monday <br/> Feb 6</td>
+      <td> Blog Post Due</td>
+      <td> <b>Blog Post Due</b> </td>
+      <td> [Blog Post Task]</td>
+    </tr>
+
+    <tr >
+      <td rowspan="2">Week 5</td>
+      <td>Thursday <br/> Feb 2</td>
+      <td> Lecture 5</td>
+      <td> <b>Practical Machine Learning (Part I)</b> </td>
+      <td> <a href="Lectures/lec5.pdf">[slides]</a></td>
+    </tr>
+    <tr>
+      <td>Thursday<br/>Feb 10</td>
+      <td> A5 Due</td>
+      <td> <b>Assignment #5 Due</b> <br/> </td>
+      <td> <a href="https://github.com/sfu-db/bigdata-cmpt733/blob/master/Assignments/A5/A5.ipynb">[Assignment #5]</a></td>
+    </tr>
+
+    <tr class="active">
+      <td rowspan="3">Week 6</td>
+      <td>Thursday <br/>Feb 9</td>
+      <td> Lecture 6</td>
+      <td> <b>Deep Learning (Part I)</b>
+      </td>
+      <td> <a href="Lectures/lec6.pdf">[slides]</a></td>
+    </tr>
+    <tr class="active">
+      <td>Tuesday <br/>Feb 9</td>
+      <td> Proposal Due</td>
+      <td> <b>Course Project Proposal Due</b> <br/> </td>
+      <td> </td>
+    </tr>
+    <tr class="active">
+      <td>Thursday <br/>Feb 16</td>
+      <td> A6 Due</td>
+      <td> <b>Assignment #6 Due</b> <br/> </td>
+      <td> <a href="https://github.com/sfu-db/bigdata-cmpt733/blob/master/Assignments/A6/A6.ipynb">[Assignment #6]</a></td>
+    </tr>
+
+    <tr >
+      <td rowspan="1">Week 7</td>
+      <td colspan="2">Reading Break (Feb 21 - 26)</td>
+      <td> <b>Suggestion: Start final project</b> </br>
+      </td>
+      <td></td>
+    </tr>
+
+    <tr class="active">
+      <td rowspan="2">Week 8</td>
+      <td>Thursday <br/>Feb 23</td>
+      <td> Lecture 7</td>
+      <td> <b>Data Visualization (Part II)</b> <br/>
+        Design Principles <br/>
+        Graph Drawing
+      </td>
+      <td> <a href="Lectures/lec7a.pdf">[slides 1]</a><a href="Lectures/lec7b.pdf">[slides 2]</a></td>
+    </tr>
+    <tr class="active">
+      <td>Thursday <br/>Mar 2</td>
+      <td> A7 Due</td>
+      <td> <b>Assignment #7 Due</b> <br/> </td>
+      <td> <a href="https://github.com/sfu-db/bigdata-cmpt733/blob/master/Assignments/A7/A7.ipynb">[Assignment #7]</a>
+      </td>
+
+    <tr>
+      <td rowspan="3">Week 9</td>
+      <td>Thursday <br/>Mar 2</td>
+      <td> Lecture 8 </td>
+      <td> <b>Practical Machine Learning (Part II)</b> <br/>
+      </td>
+      <td><a href="Lectures/lec8a.pdf">[slides 1]</a><a href="Lectures/lec8b.pdf">[slides 2]</a></td>
+    </tr>
+  
+    <tr>
+      <td>Thursday <br/>Mar 9</td>
+      <td>  </td>
+      <td> <b>Milestone Presentation</b> </td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Thursday <br/>Mar 9</td>
+      <td> A8 Due </td>
+      <td> <b>Assignment #8 Due</b>
+      </td>
+      <td> <a href="https://github.com/sfu-db/bigdata-cmpt733/blob/master/Assignments/A8/A8-1.ipynb">[Assignment #8 (Part 1)]</a> <br/> <a href="https://github.com/sfu-db/bigdata-cmpt733/blob/master/Assignments/A8/A8-2.ipynb">[Assignment #8 (Part 2)]</a></td>
+    </tr>
+
+
+    <tr class="active">
+      <td rowspan="2">Week 10</td>
+      <td>Thursday <br/>Mar 9</td>
+      <td> Lecture 9</td>
+      <td> <b>Statistics (Part II)</b> <br/>
+      <td><a href="Lectures/lec9-1.pdf">[slides 1]</a><a href="Lectures/lec9-2.pdf">[slides 2]</a></td>
+    </tr>
+    <tr class="active">
+      <td>Thursday <br/>Mar 16</td>
+      <td> A9 Due</td>
+      <td> <b>Assignment #9 Due</b> <br/> </td>
+      <td> <a href="https://github.com/sfu-db/bigdata-cmpt733/blob/master/Assignments/A9/A9-1.ipynb">[Assignment #9 (Part 1)]</a> <br/> <a href="https://github.com/sfu-db/bigdata-cmpt733/blob/master/Assignments/A9/A9-2.ipynb">[Assignment #9 (Part 2)]</a></td>
+    </tr>
+
+
+    <tr>
+      <td rowspan="2">Week 11</td>
+      <td>Thursday <br/>Mar 16</td>
+      <td> Lecture 10</td>
+     <td> Deep learning (Part II), <br/> Natural Language Processing
+      </td>
+      <td><a href="Lectures/lec10.pdf">[slides]</a>
+    </tr>
+    <tr>
+      <td>Thursday <br/>Mar 23</td>
+      <td> A10 Due</td>
+      <td> <b>Assignment #10 Due</b> <br/> </td>
+      <td> <a href="https://github.com/sfu-db/bigdata-cmpt733/blob/master/Assignments/A10/A10.ipynb">[Assignment #10]</a> </td>
+    </tr>
+
+    <tr class="active">
+      <td rowspan="2">Week 12</td>
+      <td>Thursday <br/>Mar 23</td>
+      <td> Lecture 11 </td>
+      <td> Responsible Data Science
+      </td>
+      <td><a href="Lectures/lec11.pdf">[slides]</a></td>
+    </tr>
+    <tr  class="active">
+      <td>Thursday <br/>Mar 30</td>
+      <td> A11 Due</td>
+      <td> <b>Assignment #11 Due</b> <br/> </td>
+      <td> <a href="https://github.com/sfu-db/bigdata-cmpt733/blob/master/Assignments/A11/A11-1.ipynb">[Assignment #11 (Part 1)]</a> <br/> <a href="https://github.com/sfu-db/bigdata-cmpt733/blob/master/Assignments/A11/A11-2.ipynb">[Assignment #11 (Part 2)]</a></a>
+      </td>
+    </tr>
+
+    <tr>
+      <td rowspan="2">Week 13</td>
+      <td>Thursday <br/> Mar 30</td>
+      <td> Final project prep </td>
+      <td> <br/>
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> Thursday <br/> Apr 6</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+
+    <tr>
+      <td rowspan="2">Week 14</td>
+      <td>Thursday <br/> Apr 6</td>
+      <td> Final Project Presentation & Code </td>
+      <td> <b>Course Project Presentation</b> <br/>
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> Thursday <br/> Apr 6</td>
+      <td> Report & Video Due </td>
+      <td> <b>Course Project Report Due </b></td>
+      <td> </td>
+    </tr>
+
+  </tbody>
+
+
+</table>
+
+<h3 id="project-showcase">Final Project Showcase</h3>
+<ul>
+		<li><a href="./final-project-sp20.html">Spring 2020</a> </li>
+        <li><a href="./final-project-sp19.html">Spring 2019</a> </li>
+        <li><a href="./final-project-sp18.html">Spring 2018</a> </li>
+</ul>
+
+
+      <h3 id="references">References</h3>
+      <ul>
+        <li><a href="http://data8.org/">The Foundations of Data Science (Course)</a> </li>
+        <li><a href="http://www.ds100.org/">Principles and Techniques of Data Science (Course)</a> </li>
+        <li><a href="https://www.inferentialthinking.com/chapters/intro">Computational and Inferential Thinking: The Foundations of Data Science (Free Book)</a></li>
+        <li><a href="https://learningds.org/intro">Principles and Techniques of Data Science (Free Book)</a></li>
+
+</ul>
+
+<div class="row"><h4>&nbsp; </h4><hr><p class="text-center">&nbsp; © Jiannan Wang & Steven Bergner 2023</p></div>
+</div>
+
+  </body>
+</html>

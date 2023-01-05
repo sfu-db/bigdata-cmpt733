@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>CMPT 733: Big Data Science (Spring 2020)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+      
+      body {
+        padding-top: 20px;
+    }
+    .constainer {
+      margin-top: 20px;
+    }
+
+    .top-buffer { margin-top:40px; }
+   
+    a {
+        color: #00BFFF;
+    }
+
+    a:visited {
+        color: #00BFFF;
+    }
+
+    mark {
+        background: #FF9;
+    }
+
+    b {
+        font-weight: 700;
+    }
+
+   
+
+    </style>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-112163654-1"></script>
+    <script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'UA-112163654-1');
+    </script>
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></sc\
+      ript>
+    <![endif]-->
+
+
+  </head>
+
+  <body>
+
+
+    <div class="container">
+
+
+<h2 id="cmpt843"><a href = "https://sfu-db.github.io/bigdata-cmpt733" target="_blank">CMPT 733: Big Data Science (Spring 2020)</a></h2>
+
+
+
+<h3 id="project-showcase"><b>Project Showcase</b></h3>
+
+<hr>
+
+<div class="container">
+
+
+  <div class="row  top-buffer">
+    <div class="col-md-4"> <iframe width="336" height="189" src="https://www.youtube.com/embed/wO0qmZpI590"
+         frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <div class="col-md-8"> <strong id="g-yam-pandas">"The WikiPlugin: A new lens for viewing the world’s knowledge."</strong> 
+      [<a href = "https://csil-git1.cs.surrey.sfu.ca/yka85/wikiplugin" target="_blank">Code</a>,
+       <a href = "https://github.com/sfu-db/bigdata-cmpt733/blob/cmpt733-2020sp/reports-sp20/DLee.pdf" target="_blank">PDF</a>
+       ]<br> 
+      <small><i> Donggu Lee, Matt Canute, Suraj Swaroop, Young-Min Kim, Adriena Wong </i></small>
+      <p class="text-muted"> <small>In this project, we used the open datasets released by Wikimedia to leverage both the underlying graphical nature of Wikipedia, as well as the semantic information encoded within each article's text using modern NLP techniques. We used that representation for each article to train a model to predict whether or not it would be a difficult concept to understand. Then we carefully designed an ETL pipeline to update a back-end system to support the model-scoring on a monthly basis.  We have a database and web application supporting the home page of a Chrome extension, allowing the user to highlight the important concepts of an article, and to see the expected time required to read the whole page. They can find similar articles to the one that they’re trying to learn about, or analogous concepts in other subjects that weren't connected through links. We also built a simplification priority queue for all the articles that don't currently have an existing simplified version, based on the expected amount of time the article would take to read. This could be used in conjunction with the article click demand to have a bounty system to incentivize the articles most in need to having a simplified version next.</small></p> <br/>
+    </div>
+  </div>
+
+  <div class="row  top-buffer">
+    <div class="col-md-4"> <iframe width="336" height="189" src="https://www.youtube.com/embed/kLEyOkpnuzU"
+         frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <div class="col-md-8"> <strong id="g-quintet">"DeviationFinder: An Elevator Anomaly Detection System"</strong> 
+      [<a href = "https://csil-git1.cs.surrey.sfu.ca/vvenugop/quintet.git" target="_blank">Code</a>,
+       <a href = "https://youtu.be/kLEyOkpnuzU" target="_blank">Report</a>,
+       <a href = "https://github.com/sfu-db/bigdata-cmpt733/blob/cmpt733-2020sp/reports-sp20/KNingegowda.pdf" target="_blank">PDF</a>
+       ]<br> 
+      <small><i> Keerthi Ningegowda, Kenny Tony Chakola, Ria Thomas, Varnnitha Venugopal,Vipin Das, </i></small>
+      <p class="text-muted"> <small>The objective of this project was to design a system that can predict anomalies in elevators using accelerometer data. We have created a data science pipeline that incorporates methodologies such as data cleaning, data pre-processing, exploratory data analysis, data modelling and model deployment to meet the objective. We have experimented various unsupervised models such as K-Means, DBSCAN, Isolation Forest, LSTM, and ANN Auto-encoders to capture deviations in normal patterns. LSTM Auto-encoder outperformed other models with an F1-score of 67%. A demonstration of model deployment on web using Kafka, AWS Dynamo DB, Flask and Plotly Dash is also described in this report.</small></p> <br/>
+    </div>
+  </div>
+
+  <div class="row  top-buffer">
+    <div class="col-md-4"> <iframe width="336" height="189" src="https://www.youtube.com/embed/B1FLdnFzYUI"
+         frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <div class="col-md-8"> <strong id="g-fantastic_bloggers">"Disease Outbreaks"</strong> 
+      [<a href = "https://csil-git1.cs.surrey.sfu.ca/kdesai/outbreak" target="_blank">Code</a>,
+       <a href = "https://medium.com/sfu-cspmp/disease-outbreaks-6254cc14b702" target="_blank">Report</a>,
+       <a href = "https://github.com/sfu-db/bigdata-cmpt733/blob/cmpt733-2020sp/reports-sp20/AMahadevan.pdf" target="_blank">PDF</a>
+       ]<br> 
+      <small><i> Navaneeth M, Arjun Mahadevan, Nirosha Bugatha, Kunal Desai </i></small>
+      <p class="text-muted"> <small>Our goal is to provide a consolidated view of data on all outbreaks between 1996 to 2020. Though there are several news articles published in the WHO, CDC news section, there was limited resources for a consolidated view of all outbreaks around the world. Our dashboard summarizes all past outbreaks to include disease information, occurrences, deaths and reported cases. We integrated the COVID-19 data into an independent tab to track infected cases, recovered cases and fatalities for each country. While the source for the data for other outbreaks was from WHO/CDC, the source for the COVID-19 data was from Kaggle/John Hopkins Corona Virus Center through an API.
+To consolidate data from other outbreaks, we extensively used web scraping and SpaCy NLP library in python to extract entities namely reported cases and deaths for each country and diseases that have resulted in an outbreak. For 67 diseases that have resulted in an outbreak in the past, we have compiled a database of pathogen name, pathogen host, pathogen source, mode of transmission, common symptoms, vaccination(yes/no) and incubation period. We used the combined information to cluster the outbreaks over the time period and compute the case fatality ratios for each disease and country.
+To model the spread of a disease, we used the COVID-19 data, and set up a time dependent SIR model to track the variation in the transmission rate and recovery rate, which are complex parameters determined by several factors including government action to contain the disease spread. We used the learned transmission rate and recovery rate to predict the growth of infected cases by solving the ordinary differential equations for a SIR model. The model results show a gap in actual spread against the reported cases during the initial phase of the disease. The gap in reported cases could be due to various reasons such as insufficient testing, under reporting, longer incubation periods and low fatality ratios for a particular virus. Our model captures the fact that during an outbreak, it is always prudent to take action sooner, as the actual spread is quite different from the reported cases.</small></p> <br/>
+    </div>
+  </div>
+
+  <div class="row  top-buffer">
+    <div class="col-md-4"> <iframe width="336" height="189" src="https://www.youtube.com/embed/5HZyUnGaipw"
+         frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <div class="col-md-8"> <strong id="g-bd_ara">"Strategic Asset Manager"</strong> 
+      [<a href = "https://csil-git1.cs.surrey.sfu.ca/akundra/cmpt733" target="_blank">Code</a>,
+       <a href = "https://medium.com/@asaboo_44915/sam-strategic-asset-manager-dd2d680a52dc" target="_blank">Report</a>
+       ]<br> 
+      <small><i> Ankita Kundra, Rishabh Jain, Anuj Saboo </i></small>
+      <p class="text-muted"> <small>It is tough for the majority of us without any formal training to gain the necessary information to make investment decisions. An uninformed investor has various questions on where he should put money and how much should he risk. Strategic Asset Manager(SAM) is able to guide investment strategy by being able to analyse the trends of the market and help you decide BUY and SELL strategies to maximize profits. Our machine learning approach uses NLP features generated from Edgar reports, global news sentiment and historical price data to forecast future values. LSTM model was used in conjunction with a rolling window approach to forecast 90 days values. Based on the returns, BUY and SELL strategies are then offered to the investors. SAM provides an easy to use interface to make investment decisions. It allows us to analyse a company's historical performance as well as compare its uncertainty and emotion results. Live executions of AWS services makes it possible for it to mine NLP features as well as answer user questions on Edgar reports based on a pre-trained BERT model. We have achieved knowledge from this project with a future scope of further building new features and hyper-tuning models. The problem of stock prediction is far from over, still more features can be analysed to give a stronger result and capture short term volatility to secure investments.</small></p> <br/>
+    </div>
+  </div>
+
+  <div class="row  top-buffer">
+    <div class="col-md-4"> <iframe width="336" height="189" src="https://www.youtube.com/embed/9ela0BQeP9M"
+         frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <div class="col-md-8"> <strong id="g-paranormal-distribution">"TRENDCAST - Demand Forecast with weather predictor for Fashion Retailers"</strong> 
+      [<a href = "https://github.com/inderpartap/trendcast" target="_blank">Code</a>,
+       <a href = "https://github.com/sfu-db/bigdata-cmpt733/blob/cmpt733-2020sp/reports-sp20/ICheema.pdf" target="_blank">PDF</a>
+       ]<br> 
+      <small><i> Inderpartap Cheema, Najeeb Qazi, Pallavi Bharadwaj, Mrinal Gosain </i></small>
+      <p class="text-muted"> <small>Forecasting retail sales include various factors such as store location, day of the week, market trends, etc. The addition of a factor like weather can have interesting results. Studies have shown that weather affects people's behaviors and spending. Through this project, we wanted to analyze the impact of weather on retail sales and devise a way to reliably forecast the sales and the quantity required by a retailer for a short forecast horizon. We integrated the data obtained from FIND AI with the weather data gathered from MeteoStat API. The data was then cleaned and transformed for further exploratory analysis, followed by modeling using various techniques. The models were then deployed on a Flask application, which worked as a dashboard for a user to view forecast results for each city and department.</small></p> <br/>
+    </div>
+  </div>
+
+  <div class="row  top-buffer">
+    <div class="col-md-4"> <iframe width="336" height="189" src="https://www.youtube.com/embed/XjI_4S-H_Zk"
+         frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <div class="col-md-8"> <strong id="g-deep-learners-sira">"Hierarchical Time Series Forecasting"</strong> 
+      [<a href = "https://github.com/VWJF/doppler" target="_blank">Code</a>,
+       <a href = "https://medium.com/p/45a55bb23be6" target="_blank">Report</a>
+       ]<br> 
+      <small><i> Abhishek PV, Ishan Sahay, Ria Gupta, Sachin Kumar </i></small>
+      <p class="text-muted"> <small>Sales or demand time series of a retailer could be organized along three dimensions: space, time, and product hierarchies. The spatial dimension captures the geographic distribution of the retail stores at different levels like country, province, city. The temporal dimension defines the chunks of time for which data is lumped together; for instance yearly, weekly or daily sales. And finally, the product hierarchy represents an administrative organization of products in some levels usually suggesting some degree of similarity: departments, categories, styles, etc.
+
+In the context of a retail analytics software, the user might need forecasts at any of such spatio-tempoproduct hierarchical aggregation levels; for instance city-monthly-department or store-weekly-style. The challenge, though, is that going up and down the aggregation levels, the characteristics of the time series (like its shape, patterns of seasonality, etc.) will change making it difficult to simply have a single time series forecast model. The idea of this project is to explore methodologies to cope with this challenge. 
+
+There are at least two fronts:
+<ul>
+<li>automatic choice of the appropriate model (either different types of models  or different parameters for the same class of models) for an aggregation  level</li>
+<li>create bottom-up or top-down consistent forecasts along each dimension</li>
+<li>find the optimal sweet spot of aggregation for more accurate forecasts</li>
+</ul></small></p> <br/>
+    </div>
+  </div>
+
+  <div class="row  top-buffer">
+    <div class="col-md-4"> <iframe width="336" height="189" src="https://www.youtube.com/embed/X9VMgWf_6xM"
+         frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <div class="col-md-8"> <strong id="g-gobigdata2020">"CapstoNews: Reading Balanced News"</strong> 
+      [<a href = "https://csil-git1.cs.surrey.sfu.ca/kla55/capstone.git" target="_blank">Code</a>,
+       <a href = "https://medium.com/@kla55/capstonews-reading-balanced-news-373e68752db9" target="_blank">Report</a>
+       ]<br> 
+      <small><i> Sina Balkhi, Max Ou, Kenneth Lau, Juan Ospina </i></small>
+      <p class="text-muted"> <small>Our project aims to provide an application for people who want to stay informed on all sides of the political spectrum to build well-informed opinions. To accomplish this, our product uses data science to determine the biases of news articles and to find their siblings (articles that are talking about the same topic but have different political biases). Specifically, machine learning models were developed to predict the political bias and the category (business, culture, etc.) of a news article.</small></p> <br/>
+    </div>
+  </div>
+
+  <div class="row  top-buffer">
+    <div class="col-md-4"> <iframe width="336" height="189" src="https://www.youtube.com/embed/EwswN57NsXg"
+         frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <div class="col-md-8"> <strong id="g-runtime-error">"Model Fairness & Transparency - Detecting, Understanding and Mitigating the Bias in Machine Learning Models."</strong> 
+      [<a href = "https://csil-git1.cs.surrey.sfu.ca/manjum/cmpt-733-programming-for-big-data-2" target="_blank">Code</a>,
+       <a href = "https://medium.com/@callada_27994/model-transparency-fairness-552a747b444" target="_blank">Report</a>,
+       <a href = "https://github.com/sfu-db/bigdata-cmpt733/blob/cmpt733-2020sp/reports-sp20/MMalateshappa.pdf" target="_blank">PDF</a>
+       ]<br> 
+      <small><i> Manju Malateshappa, Urvi Chauhan, Vignesh Vaidyanathan, Chidambaram Allada </i></small>
+      <p class="text-muted"> <small>Our project aims to make the Machine Learning model fair by mitigating the bias in   data. We have used tools that help in analyzing the dataset that gives us the   understanding of  data and would enable in detecting the bias based on the fairness metrics.  We started by analyzing the COMPAS dataset where we found the algorithm was biased towards the African-American Race. They were placed at higher risk of recidivism, however the ground truth didn’t match the algorithm predictions. We used EDA, Machine Learning Models, AIF360 explainers and What-If tool to understand the distribution of data across various protected attributes ( race/ gender/ age) and  detect the bias. We used Reweighing-pre-processing algorithm for bias mitigation and the results obtained were checked against the standard fairness metrics. We found significant improvement in the Fairness metrics after bias removal and also found decrease in False Positive Rate which means incorrect predictions. We explained the model through SHAP explainers and What-If tool. The results and the visualization that we obtained were hosted online which would be helpful for anyone who would like to know more about checking the biasness in the model. 
+Concluding, we can say that we have shown a method that can be used to mitigate the bias of the Machine Learning Model and hence improve the Fairness of the model built. We have also shown the Model Transparency by explaining the Model in a simple and interpretable manner.</small></p> <br/>
+    </div>
+  </div>
+
+  <div class="row  top-buffer">
+    <div class="col-md-4"> <iframe width="336" height="189" src="https://www.youtube.com/embed/JrYTXxO5qPs"
+         frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <div class="col-md-8"> <strong id="g-stackphobia">"Stack Exchange: Can we make it better?"</strong> 
+      [<a href = "https://github.com/Airlis/CMPT733_Project" target="_blank">Code</a>,
+       <a href = "https://github.com/sfu-db/bigdata-cmpt733/blob/cmpt733-2020sp/reports-sp20/WLi.pdf" target="_blank">PDF</a>
+       ]<br> 
+      <small><i> Weijia Li, Nan Xu, Haoran Chen </i></small>
+      <p class="text-muted"> <small>Like millions of people who use Stack Exchange everyday, we like Stack Exchange and want to make it better. Working toward this goal, we identify three potential areas of improvement, including inaccurate tag selection, offensive language within the community, and the lack of inter-platform analysis. We solved the first two issues with a tag prediction model based on RCNN, and an offensive language detection model based on BERT, respectively. Lastly, our analysis on the inter-platform user interests provides a unique way to boost user activities. We believe our work can benefit both Stack Exchange and millions of its users.</small></p> <br/>
+    </div>
+  </div>
+
+  <div class="row  top-buffer">
+    <div class="col-md-4"> <iframe width="336" height="189" src="https://www.youtube.com/embed/NJlhdhwn5xY"
+         frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <div class="col-md-8"> <strong id="g-long-time-coming">"WeatherOrNot: Short Term Fashion Forecast"</strong> 
+      [<a href = "https://csil-git1.cs.surrey.sfu.ca/oojameru/cmpt-project-3er" target="_blank">Code</a>,
+       <a href = "https://youtu.be/1tXgtaf6niI" target="_blank">Report</a>
+       ]<br> 
+      <small><i> Aishwerya Akhil Kapoor, Ogheneovo Ojameruaye, Peshotan Irani </i></small>
+      <p class="text-muted"> <small>There have been a number of studies concerning the impact of weather on shopping demand. Weather patterns influence how people decide, what type of clothings they buy or if to shop at all. People shop for clothing that helps them feel comfortable in the current or expected weather. Seasonal changes also influence fashion trends. Retail companies must, therefore, understand and predict shoppers’ behaviour to help better planning. Such demand forecasting helps these companies improve cost efficiencies as it provides reliable intelligence to better plan supply, manage inventory, and more efficiently staff stores. Our focus, therefore, is to model the impact of weather on shopping behaviour, providing the demand forecasting that aids such cost efficiencies.</small></p> <br/>
+    </div>
+  </div>
+
+  <div class="row  top-buffer">
+    <div class="col-md-4"> <iframe width="336" height="189" src="https://www.youtube.com/embed/pvclvhF8ggk"
+         frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <div class="col-md-8"> <strong id="g-predict-this">"Automated Hierarchical Time-Series Forecasting"</strong> 
+      [<a href = "https://csil-git1.cs.surrey.sfu.ca/akshatb/hierarchical-time-series-forecasting/-/tree/master/" target="_blank">Code</a>,
+       <a href = "https://medium.com/sfu-cspmp/zoom-into-apache-zeppelin-47190c228225" target="_blank">Report</a>,
+       <a href = "https://github.com/sfu-db/bigdata-cmpt733/blob/cmpt733-2020sp/reports-sp20/AShrivastava.pdf" target="_blank">PDF</a>
+       ]<br> 
+      <small><i> Aditi Shrivastava, Akshat Bhargava, Deeksha Kamath </i></small>
+      <p class="text-muted"> <small>Time-series data is analyzed to determine the long term trend to forecast the future or perform some other kind of analysis. Moreover, hierarchical time-series requires preserving the relationships between different aggregation levels and also within the same hierarchy. We have developed an automated system that can generate consistent forecasts at different aggregation levels by choosing the model which generates the best forecasts for a particular time-series.</small></p> <br/>
+    </div>
+  </div>
+
+  <div class="row  top-buffer">
+    <div class="col-md-4"> <iframe width="336" height="189" src="https://www.youtube.com/embed/GxFh2191SAk"
+         frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <div class="col-md-8"> <strong id="g-big-data2-acsa">"Elevator Movement Anomaly Detection: Building a System that Works on Many Levels"</strong> 
+      [<a href = "https://csil-git1.cs.surrey.sfu.ca/criddel/elevator-anomaly-detection" target="_blank">Code</a>,
+       <a href = "https://csil-git1.cs.surrey.sfu.ca/criddel/elevator-anomaly-detection" target="_blank">Report</a>,
+       <a href = "https://github.com/sfu-db/bigdata-cmpt733/blob/cmpt733-2020sp/reports-sp20/ASubramanian.pdf" target="_blank">PDF</a>
+       ]<br> 
+      <small><i> Archana Subramanian, Asha Tambulker, Carmen Riddel, Shreya Shetty </i></small>
+      <p class="text-muted"> <small>The main goal of our project was to identify and predict anomalous movement in elevators in order to curtail incidents which are on the rise in Canada. We explored a large volume of elevator acceleration data, while learning about unsupervised anomaly detection, IOT and signal processing. Extensive preprocessing and exploratory data analysis were required to better understand the data.
+
+We experimented with various machine learning models including LSTM, Random Forest, XGBoost and Generalized ESD Test. Our LSTM model was able to detect anomalous vertical elevator movement in line with those found in literature. Anomalies on the horizontal axis, representing vibration, were detected using a Generalized ESD Test.  
+
+We developed a streaming dashboard using Plotly Dash which is used for streaming the elevator data, identifying anomaly points in the data and also presented whether the elevator was ascending or descending.
+
+We can improve upon these findings by creating or making use of labelled data or maintenance logs which can confirm anomalous conditions. We can also experiment with other deep learning models and technologies such as H2O.ai to provide insights into various models and make comparisons between them.</small></p> <br/>
+    </div>
+  </div>
+
+  <div class="row  top-buffer">
+    <div class="col-md-4"> <iframe width="336" height="189" src="https://www.youtube.com/embed/stuchO6OG10"
+         frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <div class="col-md-8"> <strong id="g-acubeg">"StocksZilla - One stop solution to stocks portfolio generation using unsupervised learning techniques."</strong> 
+      [<a href = "https://csil-git1.cs.surrey.sfu.ca/akalliha/stock-portfolio-management" target="_blank">Code</a>,
+       <a href = "https://medium.com/sfu-cspmp/stockzilla-f19c7d1b123a" target="_blank">Report</a>
+       ]<br> 
+      <small><i> Abhishek Sundar Raman, Amogh Kallihal, Anchal Jain, Gayatri Ganapathy </i></small>
+      <p class="text-muted"> <small>Our project is a one-stop solution to finalize on the right set of the stock portfolio by utilizing historical stock market data and news information. We were able to create a lightweight application that employs the K-Medoids clustering model along with the efficient frontier portfolio generation technique. While the clustering algorithm significantly reduced the number of companies considered for portfolio generation with reduced time complexity, efficient frontier portfolio generation techniques helped us to optimize the stock allocation strategy. We were successful in employing NLP methods to perform text processing and generate sentiments from news data. The web UI deployed is a useful tool for investors and financial advisors saving their time and effort for searching and analyzing data from different sources. Overall, we suggest the users with a diverse stock portfolio having best-annualized returns. The interactive web UI provides the ed user with visualizations about each of the technical indicators, cluster distribution and suggested stock portfolios allocation based on the efficient frontier portfolio generation technique that enables them to make informed decisions about the stocks portfolio.</small></p> <br/>
+    </div>
+  </div>
+
+  <div class="row  top-buffer">
+    <div class="col-md-4"> <iframe width="336" height="189" src="https://www.youtube.com/embed/7dbOYGVl4YA"
+         frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <div class="col-md-8"> <strong id="g-big-data-squad">"Deep Learning-based Portal for Facial Applications"</strong> 
+      [<a href = "https://csil-git1.cs.surrey.sfu.ca/bigdatasquad/hexaface" target="_blank">Code</a>,
+       <a href = "http://hexaface.ddns.net" target="_blank">Report</a>,
+       <a href = "https://github.com/sfu-db/bigdata-cmpt733/blob/cmpt733-2020sp/reports-sp20/MEslamibidgoli.pdf" target="_blank">PDF</a>
+       ]<br> 
+      <small><i> Mohammad Eslamibidgoli, Ola Kolawole, Shahram Akbarinasaji, Ruihan Zhang, Ke Zhou </i></small>
+      <p class="text-muted"> <small>We developed a full-stack deep learning web portal for several facial applications, namely, face detection and recognition,  gender prediction and age estimation, facial emotion recognition as well as facial synthesis</small></p> <br/>
+    </div>
+  </div>
+
+  <div class="row  top-buffer">
+    <div class="col-md-4"> <iframe width="336" height="189" src="https://www.youtube.com/embed/QpwwKW-_cpU"
+         frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <div class="col-md-8"> <strong id="g-giaogiao">"Movie Box Office Prediction"</strong> 
+      [<a href = "https://github.com/libou/BoxOfficePrediction" target="_blank">Code</a>,
+       <a href = "https://github.com/libou/BoxOfficePrediction/blob/master/report.pdf" target="_blank">Report</a>,
+       <a href = "https://github.com/sfu-db/bigdata-cmpt733/blob/cmpt733-2020sp/reports-sp20/Qyuan.pdf" target="_blank">PDF</a>
+       ]<br> 
+      <small><i> Quan Yuan, Yuheng Liu, Wenlog Wu </i></small>
+      <p class="text-muted"> <small>In this project, we propose a machine learning approach to predict the movie box office. First, we collected the movie’s basic information by using BeautifulSoup python package as the scraping tool. The scraped dataset contained invalid data and noisy data which might influence the accuracy of our model result. To avoid this kind of issue, python pandas and other techniques(one-hot encoding, mean/sum encoding) were applied to process the raw data. After processing, we performed a model selection for better reflects the actual situation of the measured data and the XGBoost model standed out with higher accuracy. In the end, we combined the model prediction results and seaborn to provide visualization for clients. Based on the model, the movie box office can be predicted.</small></p> <br/>
+    </div>
+  </div>
+
+  <div class="row  top-buffer">
+    <div class="col-md-4"> <iframe width="336" height="189" src="https://www.youtube.com/embed/gWvCRVNyZxU"
+         frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <div class="col-md-8"> <strong id="g-xin">"Predicting COVID-19 and Analyzing Government Policy Impact"</strong> 
+      [<a href = "https://github.com/neverland1025/-CMPT-733---COVID-19-Epidemic" target="_blank">Code</a>,
+       <a href = "https://github.com/sfu-db/bigdata-cmpt733/blob/cmpt733-2020sp/reports-sp20/KWu.pdf" target="_blank">PDF</a>
+       ]<br> 
+      <small><i> Kacy Wu, Fangyu Gu, Steven Wu, Yizhou Sun, Srijeev Sarkar </i></small>
+      <p class="text-muted"> <small>The mission of our project is to develop a deep understanding of the COVID-19 pandemic spread and forecast its impact in the future. 
+To accomplish the goal, we broke our tasks into multiple sections. In terms of exploratory data analysis, we created multiple visualizations on maps, plots etc. to understand how the virus is spreading across different countries and causing deaths.
+Post EDA work, we focused on these two parts: a comparison of current time series prediction models on COVID-19 and government policy impact on this pandemic.  Most outputs were made available in a front-end for easy access as well. 
+Firstly, we tested multiple time-series machine learning models to forecast the pandemic and compared how each model performs and how our predictions ranked up against real world data. Our models include ARIMA, MLP, Prophet, Linear+XGBRegressor, and a Canadian Provincial model. 
+We also developed a Government policy model which used a dataset that was built by ourselves. We collected Canada policy data from news outlets and manually labelled them into different levels using domain knowledge. We built a linear regression model which shows that government policies have an impact on the epidemic in terms of “flattening the curve”, however, more data would be required to improve model accuracy.</small></p> <br/>
+    </div>
+  </div>
+
+  <div class="row  top-buffer">
+    <div class="col-md-4"> <iframe width="336" height="189" src="https://www.youtube.com/embed/ziVj0WcCUVM"
+         frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <div class="col-md-8"> <strong id="g-bloggers">"R.I.S.K: Revolutionize Investment Strategies using KPIs"</strong> 
+      [<a href = "https://csil-git1.cs.surrey.sfu.ca/scoelho/r.i.s.k-revolutionize-investment-strategies-using-kpis" target="_blank">Code</a>,
+       <a href = "https://youtu.be/ziVj0WcCUVM" target="_blank">Report</a>,
+       <a href = "https://github.com/sfu-db/bigdata-cmpt733/blob/cmpt733-2020sp/reports-sp20/RRozario.pdf" target="_blank">PDF</a>
+       ]<br> 
+      <small><i> Ruchita Rozario, Ravi Kiran Dubey, Ziyue Xia, Slavvy Coelho </i></small>
+      <p class="text-muted"> <small>Investing smart is one of the most key decisions that every broker and investor has to make. Making these smart choices is very crucial and we hope the project we’ve built can be used for these decisions. Our project aims to evaluate primary metrics that can help decide the right company to invest in. This crucial decision was made based on market sentiment analysis, stock values, sector wise analysis and financial KPIs like profit, revenue, total equities. Including sentiment based KPI helped us make the model based on not only non-budgeted performance indicators but also on informal factors for accurate insights. It is exciting to see data science expanding its lengths and breadths beyond the IT industry and having use cases in domains like business and finance. In conclusion, our model assisted investors to make smart decisions by deriving intuitive results leveraging analytical and prediction models.</small></p> <br/>
+    </div>
+  </div>
+
+  <div class="row  top-buffer">
+    <div class="col-md-4"> <iframe width="336" height="189" src="https://www.youtube.com/embed/beW5PgEoVGs"
+         frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <div class="col-md-8"> <strong id="g-data-crunchers">"Job Market Analysis"</strong> 
+      [<a href = "https://github.com/data-catalysis/job-cruncher" target="_blank">Code</a>,
+       <a href = "https://medium.com/sfu-cspmp/job-market-analysis-a905b9a29a31" target="_blank">Report</a>
+       ]<br> 
+      <small><i> Madana Krishnan, Nguyen Cao, Sanjana Chauhan, Sumukha Bharadwaj </i></small>
+      <p class="text-muted"> <small>The overall idea of this project is to create a one-stop solution to answer questions regarding Job Market using Data Science Pipeline and help Job Seeker, HR and Companies to make a better decision in the job market. 
+Technologies used:<br/>
+Data Collection – Scrapy, Selenium, SQLAlchemy, PostgreSQL<br/>
+Data Preprocessing - Python, Pandas, TextBlob, Jupyter Notebook<br/>
+Data Analysis - SpaCy, NLTK, Pandas, Jupyter Notebook<br/>
+Data Product - Amazon EC2, Redash, Celery, PostgreSQL</small></p> <br/>
+    </div>
+  </div>
+
+  <div class="row  top-buffer">
+    <div class="col-md-4"> <iframe width="336" height="189" src="https://www.youtube.com/embed/XyQQdxB304g"
+         frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <div class="col-md-8"> <strong id="g-data-pirates">"DRAW: Drug Review Analysis Work"</strong> 
+      [<a href = "https://csil-git1.cs.surrey.sfu.ca/akunwar/drug-review-analysis-work" target="_blank">Code</a>,
+       <a href = "https://medium.com/sfu-cspmp/draw-drug-review-analysis-work-96212ed98941" target="_blank">Report</a>,
+       <a href = "https://github.com/sfu-db/bigdata-cmpt733/blob/cmpt733-2020sp/reports-sp20/RHarode.pdf" target="_blank">PDF</a>
+       ]<br> 
+      <small><i> Rohan Harode, Shubham Malik, Akash Singh Kunwar </i></small>
+      <p class="text-muted"> <small>In summary, we aimed to extract effective inferences from our data that would benefit drug users, pharma companies and clinicians by receiving feedback of the drug based on opinion mining. We recommended top drugs for a given condition based on the sentiment score using VADER and LSTM model rating prediction. We also analyzed the emotion inclination towards a drug using 8 emotions. We get the best predictions with MLP + TF-IDF model, with an accuracy of 83%, outperforming baseline models. We trained our predictive models using NLP bag-of-words models (TF-IDF, Hashing) along with different tokenizers as part of text pre-processing. We also utilized Facebook's fastText to learn word embeddings and observed similarity among word groupings using t-SNE. Lastly, one of the most important features of our project is our interactive web application accomplishing two main goals, showcasing useful data insights and achieving real-time classification of sentiment.</small></p> <br/>
+    </div>
+  </div>
+
+  <div class="row  top-buffer">
+    <div class="col-md-4"> <iframe width="336" height="189" src="https://www.youtube.com/embed/zyXf1IqUjQc"
+         frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <div class="col-md-8"> <strong id="g-data-voyage">"One-Stop News"</strong> 
+      [<a href = "https://csil-git1.cs.surrey.sfu.ca/tirthp/cmpt733_datavoyagers.git" target="_blank">Code</a>,
+       <a href = "https://medium.com/sfu-cspmp/one-stop-news-3dd8c4785785" target="_blank">Report</a>,
+       <a href = "https://github.com/sfu-db/bigdata-cmpt733/blob/cmpt733-2020sp/reports-sp20/MRaval.pdf" target="_blank">PDF</a>
+       ]<br> 
+      <small><i> Miral Raval, Tirth Patel, Utsav Maniar </i></small>
+      <p class="text-muted"> <small>One-Stop News is an all in one news portal which provides summarized similar news articles aggregated from two websites (New York Times and The Guardian) with relevant tags and its sentiment. Also, it provides the classification of trending news articles into their relevant categories and produces a word cloud of trending terms.</small></p> <br/>
+    </div>
+  </div>
+
+  <div class="row  top-buffer">
+    <div class="col-md-4"> <iframe width="336" height="189" src="https://www.youtube.com/embed/jpdPio0Lud8"
+         frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <div class="col-md-8"> <strong id="g-data-wranglers">"Building Segmentation for Disaster Resilience"</strong> 
+      [<a href = "https://csil-git1.cs.surrey.sfu.ca/nangrish/cmpt733.git" target="_blank">Code</a>,
+       <a href = "https://medium.com/@cjrfraser/building-segmentation-for-disaster-resilliance-7f8c8f87f0e" target="_blank">Report</a>,
+       <a href = "https://github.com/sfu-db/bigdata-cmpt733/blob/cmpt733-2020sp/reports-sp20/CFraser.pdf" target="_blank">PDF</a>
+       ]<br> 
+      <small><i> Coulton Fraser, Nishit Angrish, Rhea Rodrigues, Arnab Roy </i></small>
+      <p class="text-muted"> <small>The aim of this project is to develop a building detection machine learning pipeline that will detect buildings given aerial drone photo-maps. Given overhead images of multiple African cities, our machine learning model aims to accurately predict the outline of the buildings. These insights can be used to support mapping for disaster risk management in African cities. Spacenet4 is our model of choice along with the Solaris machine learning pipeline.</small></p> <br/>
+    </div>
+  </div>
+
+  <div class="row  top-buffer">
+    <div class="col-md-4"> <iframe width="336" height="189" src="https://www.youtube.com/embed/7w41kgTTBA8"
+         frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <div class="col-md-8"> <strong id="g-datagrammers">"StackConnect: Connecting individuals to their career interests."</strong> 
+      [<a href = "https://csil-git1.cs.surrey.sfu.ca/spasha/stack-connect" target="_blank">Code</a>,
+       <a href = "https://www.youtube.com/watch?v=7w41kgTTBA8&feature=youtu.be" target="_blank">Report</a>,
+       <a href = "https://github.com/sfu-db/bigdata-cmpt733/blob/cmpt733-2020sp/reports-sp20/HKarthikeyan.pdf" target="_blank">PDF</a>
+       ]<br> 
+      <small><i> Harikrishna Karthikeyan, Roshni Shaik, Sameer Pasha, Saptarshi Dutta Gupta </i></small>
+      <p class="text-muted"> <small>The main aim of our project was to provide career recommendations to the users based on their StackOverflow activity, present temporal trends in technology along with future projections. Finally, we perform tag predictions based on the questions asked by the user.  Additionally, we also implement a semantic search technique that takes into account the popularity of the user, sentiment of the answers and cosine similarity to improve search results. Our product makes use of the StackOverflow dataset hosted on BigQuery along with the data scraped from job portals like Indeed and LinkedIn. We further combine reviews from the publicly available Glassdoor dataset to provide a comprehensive application that aggregates all the necessary information.</small></p> <br/>
+    </div>
+  </div>
+
+  <div class="row  top-buffer">
+    <div class="col-md-4"> <iframe width="336" height="189" src="https://www.youtube.com/embed/-zqJ7AyThKo"
+         frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <div class="col-md-8"> <strong id="g-full-mark">"ClINICAL BIG DATA RESEARCH"</strong> 
+      [<a href = "https://csil-git1.cs.surrey.sfu.ca/britneyt/cmpt733-project/-/tree/master" target="_blank">Code</a>,
+       <a href = "https://github.com/sfu-db/bigdata-cmpt733/blob/cmpt733-2020sp/reports-sp20/BTong.pdf" target="_blank">PDF</a>
+       ]<br> 
+      <small><i> Bin Tong, Muyao Chen, Lelei Zhang, Shitao Tu, Zhixuan Chi </i></small>
+      <p class="text-muted"> <small>This project collaborates clinical natural language processing with deep learning prediction models.  The transformation-ner extracts the medical vocabulary from rare doctor’s notes to parse the notes into features. Then those features will be further processed by machine learning models to make predictions about patients' health conditions.</small></p> <br/>
+    </div>
+  </div>
+
+  <div class="row  top-buffer">
+    <div class="col-md-4"> <iframe width="336" height="189" src="https://www.youtube.com/embed/XMQA4P7eYY0"
+         frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <div class="col-md-8"> <strong id="g-oasis">"Object Detection in x-ray Images"</strong> 
+      [<a href = "https://csil-git1.cs.surrey.sfu.ca/njuthapr/733-object_detection" target="_blank">Code</a>,
+       <a href = "https://medium.com/sfu-cspmp/object-detection-in-x-ray-images-414a4fb06dff" target="_blank">Report</a>]<br> 
+      <small><i> Nattapat Juthaprachakul, Rui Wang, Siyu Wu, Yihan Lan </i></small>
+      <p class="text-muted"> <small>The goal of this project is to use multiple algorithms, train multiple models, and report on comparative performance of each one. Performance of the models is described by mean average precision scores(Object Detection metrics), also including accuracy and recall scores.</small></p> <br/>
+    </div>
+  </div>
+
+  <div class="row  top-buffer">
+    <div class="col-md-4"> <iframe width="336" height="189" src="https://www.youtube.com/embed/FadP5Hg2dcs"
+         frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <div class="col-md-8"> <strong id="g-omelette">"Weibo Hot Search Topic Trends and Sentiment Analysis"</strong> 
+      [<a href = "https://csil-git1.cs.surrey.sfu.ca/yinglaiw/cmpt733" target="_blank">Code</a>,
+       <a href = "https://medium.com/@mha141/sentiment-analysis-and-topic-trending-analysis-with-weibo-data-7ff75e178037" target="_blank">Report</a>,
+       <a href = "https://github.com/sfu-db/bigdata-cmpt733/blob/cmpt733-2020sp/reports-sp20/CChu.pdf" target="_blank">PDF</a>
+       ]<br> 
+      <small><i> Chu Chu, Valerie Huang, Yinglai Wang, Minyi Huang </i></small>
+      <p class="text-muted"> <small>As one of the most popular online social gathering platform for microblogging in China, “Sina Weibo” (“新浪微博”) has become a rich database to collect Chinese text and has attracted extensive attention from academia and industry.  Netizens express their emotions through Weibo, thus generating massive emotional text messages. Through data collection, data processing, model selection, sentiment analysis, hot search and visualization, our project created an extended analysis of the emotional status of netizens on certain topics, opinions on a social phenomenon, and preferences, which not only have a certain commercial value, but also help to understand societal changes.</small></p> <br/>
+    </div>
+  </div>
+
+  <div class="row  top-buffer">
+    <div class="col-md-4"> <iframe width="336" height="189" src="https://www.youtube.com/embed/6roZYKL8wYU"
+         frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <div class="col-md-8"> <strong id="g-pika">"Analysis and Prediction of Patient Mortality and Length of Stay"</strong> 
+      [<a href = "https://github.com/wolight/733MIMIC_analysis" target="_blank">Code</a>,
+       <a href = "https://github.com/wolight/733MIMIC_analysis" target="_blank">Report</a>,
+       <a href = "https://github.com/sfu-db/bigdata-cmpt733/blob/cmpt733-2020sp/reports-sp20/DChen.pdf" target="_blank">PDF</a>
+       ]<br> 
+      <small><i> Danlin Chen, Yichen Ding, Wenxi Hu </i></small>
+      <p class="text-muted"> <small>In this project, we built a data science pipeline for analyzing and predicting the patient’s length of stay and mortality. We have collected data from MIMIC-III, extracted, and cleaned clinical variables that were correlated with length of stay and mortality. We approached the prediction tasks in 2 different ways: using temporal vital signs measurements and applying to a GRU model, using static information combined with extracted earliest measurements of crucial vital signs and applying to an MLNN model. We selected features based on the SAPS-II system and RandomForest feature importance and then obtained 2 feature sets: SAPS-II features as a baseline feature set and our customized feature set, which we aimed to achieve a better performance than the baseline feature set. For the short term length of stay prediction, we got 75.32% accuracy and 82.06% AUROC with GRU model using our customized feature set, outperforming the baseline model. For the long term length of stay prediction, we got 73.26% accuracy and 80.97% AUROC with the MLNN model using our customized feature set, which performed better than the baseline model. For in-hospital mortality prediction, we got 78.21% accuracy and 86.04% AUROC with the MLNN model using our customized feature set, outperforming the baseline model as well.</small></p> <br/>
+    </div>
+  </div>
+
+
+</div>
+
+<div class="row"><h4>&nbsp; </h4><hr><p class="text-center">&nbsp; © Jiannan Wang and Steven Bergner 2020</p></div>
+    </div>
+
+  </body>
+</html>
