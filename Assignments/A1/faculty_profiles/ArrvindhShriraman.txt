@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+	
+	
+	
+	
+<title>
+			Arrvindh Shriraman - Computing Science - Simon Fraser University
+	</title>
+<script type="text/javascript">
+	CQURLInfo = {"requestPath":"/computing/people/faculty/ArrvindhShriraman","runModes":"p,s7connect,crx3,nosamplecontent,publish,crx3tar"};
+	CQPageConfig = {};
+</script>
+	
+
+<link rel="stylesheet" href="/etc/designs/clf/clientlibs/pack/head.styles.min.css" type="text/css">
+
+
+
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/ui-lightness/jquery-ui.css" type="text/css">
+	<link rel="stylesheet" href="/content/dam/sfu/computing/IconicState/is-cs.css" type="text/css">
+	<link rel="stylesheet" href="/content/dam/sfu/computing/IconicState/is-cs-980.css" type="text/css">
+	<link rel="stylesheet" href="/content/dam/sfu/computing/IconicState/is-cs-768.css" type="text/css">
+	<link rel="stylesheet" href="/content/dam/sfu/computing/IconicState/is-cs-480.css" type="text/css">
+	<link rel="stylesheet" href="/content/dam/sfu/computing/IconicState/final.css" type="text/css">
+
+
+<script src="/etc.clientlibs/clientlibs/granite/jquery.min.js"></script>
+<script src="/etc.clientlibs/clientlibs/granite/utils.min.js"></script>
+<script src="/etc.clientlibs/clientlibs/granite/jquery/granite.min.js"></script>
+<script src="/etc.clientlibs/foundation/clientlibs/jquery.min.js"></script>
+
+<script src="/etc.clientlibs/clientlibs/granite/jquery-ui.min.js"></script>
+<script src="/etc.clientlibs/foundation/clientlibs/jquery-ui.min.js"></script>
+
+<script src="/etc/designs/clf/clientlibs/pack/head.scripts.min.js"></script>
+
+<script type="text/javascript">var $ = jQuery;</script>
+
+<!--[if lt IE 9]>
+	<script src="/etc/designs/clf/clientlibs/html5shiv.min.js"></script>
+<script src="/etc/designs/clf/clientlibs/respond.min.js"></script>
+
+<![endif]-->
+
+<!--[if lte IE 9]>
+	<script src="/etc/designs/clf/clientlibs/matchmedia.min.js"></script>
+
+<![endif]-->
+
+
+				<script type="text/javascript">
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-162598353-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		</script>
+	
+	    <!-- Google Tag Manager V4 -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-W87RML');</script>
+    <!-- End Google Tag Manager V4 -->
+
+    
+	<meta property="og:title" content="Arrvindh Shriraman" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content=$classNewsController.getPageURL() />
+<meta property="og:description" content="" />
+<meta property="og:image" content="$classNewsController.getHostName()/content/dam/sfu/images/common/SFU-social-image.jpeg/jcr:content/renditions/medium.jpg" />
+<meta property="og:image:width" content="0" />
+<meta property="og:image:height" content="0" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="" />
+<meta name="twitter:title" content="Arrvindh Shriraman" />
+<meta name="twitter:description" content="" />
+<meta name="twitter:image" content="$classNewsController.getHostName()/content/dam/sfu/images/common/SFU-social-image.jpeg/jcr:content/renditions/medium.jpg" />
+
+
+</head>
+
+
+<body>
+	    <!-- Google Tag Manager (noscript) V4 -->
+    <noscript><iframe src=https://www.googletagmanager.com/ns.html?id=GTM-W87RML
+                      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) V4 -->
+
+    
+<div id="container" class="">
+
+    <div id="page">
+
+					<header>
+
+    <button class="toggle-search-control">Search</button>
+
+    <section class="heading">
+
+		
+        <div class="brand-title">
+
+            <a href="http://www.sfu.ca/main.html">
+                <div class="branding">
+                    <h1>Simon Fraser University<br/>Engaging the World</h1>
+                </div>
+            </a> <!-- end branding -->
+
+							<div class="site-title">
+										<h2>
+						<a href="/computing.html">Computing Science</a>
+					</h2>
+				</div>
+			        </div>
+    </section>
+    <!-- end .heading -->
+
+        <section class="actionable-header">
+        <div class="search">
+            <form action="/search.html" method="GET">
+									<fieldset class="search-field">
+						<input type="search" placeholder="Search" name="q" />
+						<input type="hidden" name="p" value="/content/sfu/computing" />
+					</fieldset>
+
+					<fieldset class="search-scope-set">
+						<label><input type="radio" checked="checked" value="site" name="search-scope" />This site</label>
+						<label><input type="radio" value="sfu" name="search-scope" />SFU.ca</label>
+					</fieldset>
+				            </form>
+        </div>
+        <!-- end search -->
+
+        <div class="global-links">
+            <div class="mobile-global-links-container">
+                <ul class="mobile-global-links">
+					
+                    <li class="header">
+						<a href="/dir/a.html">
+							A-Z <span>directory</span>
+						</a>
+					</li>
+                    <li class="header sign-in">
+						<a class="mobile-toggle" href="#">
+							Sign in
+							<span class="icon icon-plus-sign"></span>
+						</a>
+                        <ul>
+															<li><a href="https://mail.sfu.ca">Mail</a></li>
+								<li><a href="https://go.sfu.ca"><span>go</span>SFU</a></li>
+								<li><a href="https://canvas.sfu.ca">Canvas</a></li>
+							                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <ul class="sf-menu">
+				
+                <li>
+					<a href="#">A-Z Directory</a>
+                    <ul class="expanded directory">
+                        <li><a href="/main/dir/a.html">a</a></li>
+                        <li><a href="/main/dir/b.html">b</a></li>
+                        <li><a href="/main/dir/c.html">c</a></li>
+                        <li><a href="/main/dir/d.html">d</a></li>
+                        <li><a href="/main/dir/e.html">e</a></li>
+                        <li><a href="/main/dir/f.html">f</a></li>
+                        <li><a href="/main/dir/g.html">g</a></li>
+                        <li><a href="/main/dir/h.html">h</a></li>
+                        <li><a href="/main/dir/i.html">i</a></li>
+                        <li><a href="/main/dir/j.html">j</a></li>
+                        <li><a href="/main/dir/k.html">k</a></li>
+                        <li><a href="/main/dir/l.html">l</a></li>
+                        <li><a href="/main/dir/m.html">m</a></li>
+                        <li><a href="/main/dir/n.html">n</a></li>
+                        <li><a href="/main/dir/o.html">o</a></li>
+                        <li><a href="/main/dir/p.html">p</a></li>
+                        <li><a href="/main/dir/q.html">q</a></li>
+                        <li><a href="/main/dir/r.html">r</a></li>
+                        <li><a href="/main/dir/s.html">s</a></li>
+                        <li><a href="/main/dir/t.html">t</a></li>
+                        <li><a href="/main/dir/u.html">u</a></li>
+                        <li><a href="/main/dir/v.html">v</a></li>
+                        <li><a href="/main/dir/w.html">w</a></li>
+                        <li><a href="/main/dir/x.html">x</a></li>
+                        <li><a href="/main/dir/y.html">y</a></li>
+                        <li><a href="/main/dir/z.html">z</a></li>
+                    </ul>
+                </li>
+
+									<li><a href="#">Sign in</a>
+						<ul class="expanded">
+                            <li><a href="https://mail.sfu.ca">SFU Mail</a></li>						
+							<li><a href="https://go.sfu.ca"><span>go</span>SFU</a></li>
+							<li><a href="https://canvas.sfu.ca">Canvas</a></li>
+						</ul>
+					</li>
+				            </ul>
+            <!-- end sf-menu sf-navbar -->
+        </div>
+        <!-- end global-links -->
+    </section>
+    <!-- end .actionable-header -->
+    </header>
+
+<div class="header-divider">
+</div> <!-- end header-divider -->
+		
+		
+			<div id="page-content" class="three-column">
+									<div class="first-col">
+						<nav class="default-nav">
+
+    <div class="nav-control">
+        <button class="navtoggle">Nav</button>
+    </div>
+
+		<ul>
+					<li class="">
+				<a href="/computing.html">Home</a>
+			</li>
+		
+		
+					<li class="">
+				<a href="/computing/about.html">
+					About Computing Science
+				</a>
+
+										<ul>
+		
+					<li class="nav-overview-item ">
+				<a href="/computing/about.html">Overview</a>
+			</li>
+		
+					<li class="">
+				<a href="/computing/about/message-from-the-director.html">
+					Message from the Director
+				</a>
+
+							</li>
+					<li class="">
+				<a href="/computing/about/history.html">
+					History of the School
+				</a>
+
+							</li>
+					<li class="">
+				<a href="/computing/about/support.html">
+					Facilities and Support
+				</a>
+
+							</li>
+					<li class="">
+				<a href="/computing/about/grants-and-awards.html">
+					Awards
+				</a>
+
+							</li>
+					<li class="">
+				<a href="/computing/about/school-executives.html">
+					School Executives
+				</a>
+
+							</li>
+			</ul>
+
+							</li>
+					<li class="">
+				<a href="/computing/contact-us.html">
+					Contact Us
+				</a>
+
+									
+							</li>
+					<li class="active">
+				<a href="/computing/people.html">
+					People
+				</a>
+
+										<ul>
+		
+					<li class="nav-overview-item ">
+				<a href="/computing/people.html">Overview</a>
+			</li>
+		
+					<li class="">
+				<a href="/computing/people/staff.html">
+					Staff
+				</a>
+
+							</li>
+					<li class="">
+				<a href="/computing/people/alumni.html">
+					Alumni
+				</a>
+
+							</li>
+					<li class="active">
+				<a href="/computing/people/faculty.html">
+					Faculty
+				</a>
+
+									
+							</li>
+			</ul>
+
+							</li>
+					<li class="">
+				<a href="/computing/prospective-students.html">
+					Prospective Students
+				</a>
+
+										<ul>
+		
+					<li class="nav-overview-item ">
+				<a href="/computing/prospective-students.html">Overview</a>
+			</li>
+		
+					<li class="">
+				<a href="/computing/prospective-students/undergraduate-students.html">
+					Undergraduate Students
+				</a>
+
+							</li>
+					<li class="">
+				<a href="/computing/prospective-students/graduate-students.html">
+					Graduate Students
+				</a>
+
+							</li>
+			</ul>
+
+							</li>
+					<li class="">
+				<a href="/computing/current-students.html">
+					Current Students
+				</a>
+
+										<ul>
+		
+					<li class="nav-overview-item ">
+				<a href="/computing/current-students.html">Overview</a>
+			</li>
+		
+					<li class="">
+				<a href="/computing/current-students/undergraduate-students.html">
+					Undergraduate Students
+				</a>
+
+							</li>
+					<li class="">
+				<a href="/computing/current-students/graduate-students.html">
+					Graduate Students
+				</a>
+
+							</li>
+			</ul>
+
+							</li>
+					<li class="">
+				<a href="/computing/research.html">
+					Research
+				</a>
+
+										<ul>
+		
+					<li class="nav-overview-item ">
+				<a href="/computing/research.html">Overview</a>
+			</li>
+		
+					<li class="">
+				<a href="/computing/research/research-areas.html">
+					Research Areas
+				</a>
+
+							</li>
+					<li class="">
+				<a href="/computing/research/research-chairs.html">
+					Research Chairs
+				</a>
+
+							</li>
+					<li class="">
+				<a href="/computing/research/tech-reports-thesis.html">
+					Tech Reports and Theses
+				</a>
+
+							</li>
+			</ul>
+
+							</li>
+					<li class="">
+				<a href="/computing/industryrelations.html">
+					Industry Relations
+				</a>
+
+										<ul>
+		
+					<li class="nav-overview-item ">
+				<a href="/computing/industryrelations.html">Overview</a>
+			</li>
+		
+					<li class="">
+				<a href="/computing/industryrelations/hiring-computing-science-students.html">
+					Hiring Computing Science Students
+				</a>
+
+							</li>
+					<li class="">
+				<a href="/computing/industryrelations/research-partnerships.html">
+					Research Partnerships
+				</a>
+
+							</li>
+					<li class="">
+				<a href="/computing/industryrelations/advancement.html">
+					Giving
+				</a>
+
+							</li>
+			</ul>
+
+							</li>
+					<li class="">
+				<a href="/computing/newsandevents.html">
+					News & Events
+				</a>
+
+										<ul>
+		
+					<li class="nav-overview-item ">
+				<a href="/computing/newsandevents.html">Overview</a>
+			</li>
+		
+					<li class="">
+				<a href="/computing/newsandevents/archives.html">
+					News Archives
+				</a>
+
+							</li>
+					<li class="">
+				<a href="/computing/newsandevents/events.html">
+					Calendar of Events
+				</a>
+
+							</li>
+					<li class="">
+				<a href="/computing/newsandevents/faculty-candidate-seminars-2022.html">
+					Faculty Candidate Seminars 2022
+				</a>
+
+							</li>
+					<li class="">
+				<a href="/computing/newsandevents/distinguished-lecture-series.html">
+					Distinguished Lecture Series
+				</a>
+
+							</li>
+			</ul>
+
+							</li>
+					<li class="">
+				<a href="/computing/job-opportunities.html">
+					Job Opportunities
+				</a>
+
+									
+							</li>
+					<li class="">
+				<a href="/computing/diversity-in-computing-science.html">
+					Diversity in Computing Science
+				</a>
+
+										<ul>
+		
+					<li class="nav-overview-item ">
+				<a href="/computing/diversity-in-computing-science.html">Overview</a>
+			</li>
+		
+					<li class="">
+				<a href="/computing/diversity-in-computing-science/activities.html">
+					Activities
+				</a>
+
+							</li>
+					<li class="">
+				<a href="/computing/diversity-in-computing-science/dashboard.html">
+					Dashboard
+				</a>
+
+							</li>
+			</ul>
+
+							</li>
+					<li class="">
+				<a href="/computing/intranet.html">
+					Computing Science Intranet
+				</a>
+
+									
+							</li>
+			</ul>
+
+</nav>
+													<div class="below-nav inherited-parsys">						<div class="parsys">
+
+<div class="text parbase section">
+
+<div class="social-media">
+<p>Follow and share<br>
+<a href="https://www.facebook.com/FAS.SFU"><img src="/content/dam/sfu/images/icons/facebook_32.png">&nbsp; </a><a href="https://twitter.com/FAS_SFU"><img width="32" height="32" src="/content/dam/sfu/images/icons/twitter_32.png"></a><a href="http://www.flickr.com/photos/fas_sfu"><img width="35" height="35" src="/content/dam/sfu/images/icons/flickr.png"></a> <a href="http://www.youtube.com/fascomms"><img src="/content/dam/sfu/images/icons/youtube-icon_32x32.png"></a></p>
+
+</div></div>
+</div>
+
+			</div>
+
+										</div>
+				
+				<div class="breadcrumb">
+	<a href="/computing.html">Home</a> /
+						<a href="/computing/people.html">People</a> /
+								<a href="/computing/people/faculty.html">Faculty</a> /
+								Arrvindh Shriraman
+			</div>
+				<div class="mobile-sub-nav"><div class="mobile-sub-menu">
+	</div></div>
+
+
+				<section class="main">
+
+																	<div class="above-main inherited-parsys">				</div>
+
+						<div class="main_content parsys">
+
+<div class="title section"><div><h1>Arrvindh Shriraman</h1></div></div>
+<div class="parsys_column cq-colctrl-lt0 "><div class="parsys_column cq-colctrl-lt0-c0"><div class="text parbase section">
+
+<div class="">
+<p>Associate Professor, School of Computing Science</p>
+<p>Program Director of Software Systems, Surrey<br>
+</p>
+
+</div></div>
+<div class="image parbase section">
+<script src="/etc/designs/sfu/clientlibs/image-map-coord.min.js"></script>
+                  
+<div class="image image-container framed"><div data-picture data-alt='Arrvindh Shriraman' data-style='' data-title='Arrvindh Shriraman'>
+<div data-src="/content/sfu/computing/people/faculty/ArrvindhShriraman/jcr:content/main_content/image.img.96.low.jpg/1385442644671.jpg" data-media="(min-width: 1px)"></div>
+<div data-src="/content/sfu/computing/people/faculty/ArrvindhShriraman/jcr:content/main_content/image.img.320.medium.jpg/1385442644671.jpg" data-media="(min-width: 320px)"></div>
+<div data-src="/content/sfu/computing/people/faculty/ArrvindhShriraman/jcr:content/main_content/image.img.640.medium.jpg/1385442644671.jpg" data-media="(min-width: 321px)"></div>
+<div data-src="/content/sfu/computing/people/faculty/ArrvindhShriraman/jcr:content/main_content/image.img.1280.high.jpg/1385442644671.jpg" data-media="(min-width: 481px)"></div>
+<div data-src="/content/sfu/computing/people/faculty/ArrvindhShriraman/jcr:content/main_content/image.img.1280.high.jpg/1385442644671.jpg" data-media="(min-width: 769px)"></div>
+<div data-src="/content/sfu/computing/people/faculty/ArrvindhShriraman/jcr:content/main_content/image.img.2000.high.jpg/1385442644671.jpg" data-media="(min-width: 1025px)"></div>
+<noscript>
+<img src='/content/sfu/computing/people/faculty/ArrvindhShriraman/_jcr_content/main_content/image.img.original.low.jpg/1385442644671.jpg' alt='Arrvindh Shriraman'>
+</noscript>
+</div></div></div>
+<div class="text parbase section">
+
+<div class="">
+<h2>Contact:</h2>
+<table cellpadding="2">
+<tbody><tr><td>Email:<br>
+</td>
+<td><a href="mailto:ashriram@cs.sfu.ca" target="_blank">ashriram@cs.sfu.ca</a></td>
+</tr><tr><td>Fax:<br>
+</td>
+<td>+1.778.782.8116</td>
+</tr><tr><td>Office:<br>
+</td>
+<td>SFU Burnaby, TASC 1 9009</td>
+</tr><tr><td colspan="2">Personal webpage:&nbsp; <a target="_blank" href="http://www.cs.sfu.ca/~ashriram/">www.cs.sfu.ca/~ashriram/</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+</td>
+</tr></tbody></table>
+
+</div></div>
+</div><div class="parsys_column cq-colctrl-lt0-c1"><div class="text parbase section">
+
+<div class="listed">
+<h2>Education</h2>
+<ul>
+<li>Ph.D., Computer Science, University of Rochester, New York, United States, 2010</li>
+<li>M.S., Computer Science, University of Rochester, New York, United States, 2006</li>
+<li>B.Eng., Computer Science and Engineering, University of Madras, Chennai, Tamil Nadu, India, 2004</li>
+</ul>
+
+</div></div>
+<div class="text parbase section">
+
+<div class="listed">
+<h2>Research interests</h2>
+<ul>
+<li>Improving energy efficiency of&nbsp; software</li>
+<li>Multicore memory systems</li>
+<li>Hardware/Software Interface for improving programming</li>
+<li>Synchronization</li>
+</ul>
+
+</div></div>
+<div class="text parbase section">
+
+<div class="listed">
+<h2>Teaching interests</h2>
+<ul>
+<li>Parallel programming and synchronization</li>
+<li>Energy conscious software programming</li>
+</ul>
+
+</div></div>
+</div></div><div style="clear:both"></div><div class="text parbase section">
+
+<div class="listed">
+<h2>Recently taught courses</h2>
+<ul>
+<li>CMPT 479 Special Topics in Computing Systems
+</li>
+<li>CMPT 885 Future Multicore Systems and their Software (offered in summer)<br>
+</li>
+</ul>
+
+</div></div>
+<div class="text parbase section">
+
+<div class="listed">
+<h2>Selected recent publications&nbsp;</h2>
+<ul>
+<li>SPACE : Sharing Pattern based Directory Coherence for Multicore Scalability.PACT 2010<a name="_GoBack"></a></li>
+<li>Sentry: An Auxiliary Memory Access Control, ISCA 2010</li>
+<li>An Integrated Hardware-Software Approach to Flexible Transactional Memory, ISCA 2007</li>
+</ul>
+<p><a href="http://www.informatik.uni-trier.de/%7Eley/db/indices/a-tree/s/Shriraman:Arrvindh.html"><br>
+Listing</a> on the DBLP CS Bibliography Server.</p>
+
+</div></div>
+</div>
+
+						<div class="below-main inherited-parsys">				</div>
+
+									</section>
+
+
+									<section class="sub">
+													<div class="above-parent-sub inherited-parsys">				</div>
+
+							<div class="above-sub inherited-parsys">				</div>
+
+							<div class="sub_content parsys">
+
+<div class="reference parbase section"><div class="cq-dd-paragraph">
+</div></div>
+</div>
+
+							<div class="below-sub inherited-parsys">				</div>
+
+											</section>
+				
+								
+									<footer>
+	<ul>
+		<li><a href="/main/admission.html">Admission</a></li>
+		<li><a href="/main/programs.html">Programs</a></li>
+		<li><a href="/main/learning.html">Learning</a></li>
+		<li><a href="/main/research-at-sfu.html">Research</a></li>
+		<li><a href="/main/sfu-community.html">Community</a></li>
+		<li><a href="/main/about.html">About</a></li>
+	</ul> 
+
+    <ul>
+		<li><a href="/main/campuses/maps.html">Maps + directions</a></li>
+		<li><a href="http://www.lib.sfu.ca/">Library</a></li>
+		<li><a href="/calendar">Academic Calendar</a></li>
+		<li><a href="http://www.sfu.ca/security/sfuroadconditions/">Road Report</a></li>
+		<li><a href="http://www.sfu.ca/advancement">Give to SFU</a></li>
+		<li><a href="http://www.sfu.ca/emergency">Emergency Information</a></li>
+    </ul>
+
+    <ul>
+        <li class="header">
+                            Connect with us
+                    </li>
+        <li>
+							<div class="connect-with-us inherited-parsys">						<div class="parsys">
+
+<div class="text parbase section">
+
+<div class="">
+<p><a href="https://www.facebook.com/SFUCompSci" target="_blank">Facebook</a><br>
+<a href="https://twitter.com/SFU_CompSci" target="_blank">Twitter</a><br>
+<a href="https://www.instagram.com/sfucompsci/" target="_blank">Instagram</a><br>
+<a href="http://www.flickr.com/photos/fas_sfu"></a></p>
+
+</div></div>
+</div>
+
+			</div>
+
+			        </li>
+    </ul>
+
+    <ul>
+        <li class="header">
+			<a href="/computing/contact.html">Contact us</a>
+		</li>
+        <li>
+							<div class="contact-us inherited-parsys">						<div class="parsys">
+
+<div class="text parbase section">
+
+<div class="">
+<p>Simon Fraser University<br>
+8888 University Drive<br>
+Burnaby, B.C.<br>
+Canada V5A 1S6<br>
+<a href="/computing/contact-us.html">CS Contact Us</a></p>
+<p>&nbsp;</p>
+
+</div></div>
+</div>
+
+			</div>
+
+			        </li>
+    </ul>
+
+    <ul>
+		<li>
+							<div class="footer-right inherited-parsys">				</div>
+
+					</li>
+        <li><a href="/contact/terms-conditions.html">Terms and conditions</a></li>
+        <li>&copy; Simon Fraser University</li>
+    </ul>
+</footer>
+							</div>
+			<!-- end page-content -->
+		    </div>
+    <!-- end page -->
+</div>
+<!-- end container -->
+
+<script src="/etc/designs/clf/clientlibs/pack/footer.scripts.min.js"></script>
+
+
+	<script src="/etc/designs/sfu/clientlibs/toggleFormContent.min.js"></script>
+
+
+
+	<script type="text/javascript" src="/content/dam/sfu/computing/IconicState/random-load.js"></script>
+	<script type="text/javascript" src="/content/dam/sfu/computing/IconicState/is-js.js"></script>
+	<script type="text/javascript" src="/content/dam/sfu/computing/IconicState/jquery.flexverticalcenter.js"></script>
+	<script type="text/javascript" src="/content/dam/sfu/computing/IconicState/iefix.js"></script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD44jeJOt_sfOZp2a5EtHCsddRVttb5vCg"></script>
+
+</body>
+
+</html>
+
+
