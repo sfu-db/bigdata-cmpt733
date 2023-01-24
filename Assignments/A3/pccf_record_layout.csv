@@ -1,0 +1,33 @@
+﻿Position,Size,Type,Field name,Description
+1,6,C,Postal code,Postal code
+7,3,C,FSA,Forward sortation area©
+10,2,C,PR,Province or territory code
+12,4,C,CDuid,Census division unique identifier
+16,7,C,CSDuid,Census subdivision unique identifier
+23,70,C,CSDname,Census subdivision name
+93,3,C,CSDtype,Census subdivision type
+96,3,C,CCScode,Census consolidated subdivision code
+99,3,C,SAC,Statistical Area Classification code (includes CMA/CA)
+102,1,C,SACtype,Statistical Area Classification type (includes CMA/CA)
+103,7,C,CTname,Census tract name
+110,2,C,ER,Economic region code
+112,4,C,DPL,Designated place code
+116,5,C,FED13uid,Federal electoral district – 2013 Representation Order unique identifier
+121,4,C,POP_CNTR_RA,Population centre/rural area code
+125,1,C,POP_CNTR_RA_type,Population centre/rural area type
+126,8,C,DAuid,Dissemination area unique identifier
+134,3,C,Dissemination block,Dissemination block code
+137,1,C,Rep_Pt_Type,Representative point type
+138,11,N,LAT,Latitude of lowest level geographic area for postal codeOM record (as indicated in Rep_point variable)
+149,13,N,LONG,Longitude of lowest level geographic area for postal codeOM record (as indicated in Rep_point variable)
+162,1,C,SLI,Single link indicator
+163,1,C,PCtype,Postal codeOM type
+164,30,C,Comm_Name,Community name
+194,1,C,DMT,Delivery mode type
+195,1,C,H_DMT,Historic delivery mode type
+196,8,C,Birth_Date,Birth date (yyyymmdd)
+204,8,C,Ret_Date,Retired date (yyyymmdd)
+212,1,C,PO,Delivery installation
+213,3,C,QI,Quality indicator
+216,1,C,Source,Source of geocoding
+217,1,C,POP_CNTR_RA_SIZE_CLASS,Population centre and rural area classification
